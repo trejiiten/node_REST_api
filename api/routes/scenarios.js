@@ -8,8 +8,13 @@ router.get('/',(req, res, next)=>{
 });
 
 router.post('/',(req, res, next)=>{
+    const scenario = {
+        testcase_title: req.body.testcase_title,
+        testcase_stepId: req.body.testcase_stepId
+    };
     res.status(201).json({
-        message: 'Scenarios added'
+        message: 'Scenarios added',
+        createdScenario: scenario
     });
 });
 
