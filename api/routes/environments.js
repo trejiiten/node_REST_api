@@ -1,15 +1,28 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-router.get('/', (req, res, next)=>{
-    res.status(200).json({
-        message: 'Handling GET requests to /environments'
-    });
-});
+const Environment = require('../models/environment')
+const mongoose = require('mongoose')
 
-router.post('/', (req, res, next)=>{
-    const environment = {
-        featureId: req.body.featureId,
+router.get('/', (req, res, next) => {
+  Environment.find()
+    .exec()
+    .then((docs) => {
+      console.log(docs)
+      res.status(200).json(docs)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({
+        error: err,
+      })
+    })
+})
+
+router.post('/', (req, res, next) => {
+  const environment = new Environment({
+    _id: new mongoose.Types.ObjectId(),
+    featureId: req.body.featureId,
     os_name: req.body.os_name,
     os_version: req.body.os_version,
     branch: req.body.branch,
@@ -25,34 +38,65 @@ router.post('/', (req, res, next)=>{
     java_version: req.body.java_version,
     jvm_version: req.body.jvm_version,
     jvm_vendor: req.body.jvm_vendor,
-    webdriver_version: req.body.webdriver_version
-    };
-    res.status(201).json({
-        message: 'Handling POST requests to /environments',
-        createdEnvironment: environment
-    });
+    webdriver_version: req.body.webdriver_version,
+  })
+  environment
+    .save()
+    .then((result) => {
+      console.log(result)
+      res.status(201).json({
+        message: 'Handling POST request to /environments',
+        createdFeature: result,
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({
+        error: err,
+      })
+    })
+})
 
-});
+router.get('/:environmentId', (req, res, next) => {
+  const id = req.params.environmentId
+  Environment.findById(id)
+    .exec()
+    .then((doc) => {
+      console.log(doc)
+      if (doc) {
+        res.status(200).json(doc)
+      } else {
+        res.status(404).json({
+          message: `No valid entry exists with the ID: ${id}`,
+        })
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({
+        error: err,
+      })
+    })
+})
 
-router.get('/:environmentId', (req, res, next)=>{
-    const id = req.params.environmentId;
-    if(id === 'special'){
-        res.status(200).json({
-            message: 'You have entered the special ID',
-            id: id
-        });
-    } else {
-        res.status(200).json({
-            message: `You have entered the id: ${id}`
-        });
-    }
-});
+router.patch('/:environmentId', (req, res, next) => {
+  const id = req.params.environmentId
+  const updateOperations = {}
+  for (const ops of req.body) {
+    updateOperations[ops.propName] = ops.value
+  }
+  Environment.update({ _id: id }, { $set: updateOperations })
+    .exec()
+    .then((result) => {
+      console.log(result)
+      res.status(200).json(result)
+    })
+    .catch((er) => {
+      console.log(err)
+      res.status(500).json({
+        error: err,
+      })
+    })
+})
 
-router.patch('/:environmentId', (req, res, next)=>{
-    const id = req.params.environmentId;
-    res.status(200).json({
-        message: `You have UPDATED the id: ${id}`
-    });
-});
-
-module.exports = router;
+module.exports = router
