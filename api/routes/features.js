@@ -1,13 +1,13 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const Feature = require('../models/feature')
-const mongoose = require('mongoose')
+const Feature = require("../models/feature");
+const mongoose = require("mongoose");
 
-router.get('/', (req, res, next) => {
+router.get("/", (req, res, next) => {
   Feature.find()
     .select(
-      'feature_file_title feature_file_type feature_file_location scenarioId total_tests total_steps time_start time_end total_time _id'
+      "feature_file_title feature_file_type feature_file_location scenarioId total_tests total_steps time_start time_end total_time _id"
     )
     .exec()
     .then((docs) => {
@@ -26,23 +26,23 @@ router.get('/', (req, res, next) => {
             total_time: doc.total_time,
             _id: doc.id,
             request: {
-              type: 'GET',
+              type: "GET",
               url: `http://localhost:3000/features/${doc._id}`,
             },
-          }
+          };
         }),
-      }
-      res.status(200).json(response)
+      };
+      res.status(200).json(response);
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
       res.status(500).json({
         error: err,
-      })
-    })
-})
+      });
+    });
+});
 
-router.post('/', (req, res, next) => {
+router.post("/", (req, res, next) => {
   const feature = new Feature({
     _id: new mongoose.Types.ObjectId(),
     feature_file_title: req.body.feature_file_title,
@@ -54,64 +54,64 @@ router.post('/', (req, res, next) => {
     time_start: req.body.time_start,
     time_end: req.body.time_end,
     total_time: req.body.total_time,
-  })
+  });
   feature
     .save()
     .then((result) => {
-      console.log(result)
+      console.log(result);
       res.status(201).json({
-        message: 'Handling POST request to /features',
+        message: "Handling POST request to /features",
         createdFeature: result,
-      })
+      });
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
       res.status(500).json({
         error: err,
-      })
-    })
-})
+      });
+    });
+});
 
-router.get('/:featureId', (req, res, next) => {
-  const id = req.params.featureId
+router.get("/:featureId", (req, res, next) => {
+  const id = req.params.featureId;
   Feature.findById(id)
     .exec()
     .then((doc) => {
-      console.log(doc)
+      console.log(doc);
       if (doc) {
-        res.status(200).json(doc)
+        res.status(200).json(doc);
       } else {
         res.status(404).json({
           message: `No valid entry exists with the ID: ${id}`,
-        })
+        });
       }
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
       res.status(500).json({
         error: err,
-      })
-    })
-})
+      });
+    });
+});
 
-router.patch('/:featureId', (req, res, next) => {
-  const id = req.params.featureId
-  const updateOperations = {}
+router.patch("/:featureId", (req, res, next) => {
+  const id = req.params.featureId;
+  const updateOperations = {};
   for (const ops of req.body) {
-    updateOperations[ops.propName] = ops.value
+    updateOperations[ops.propName] = ops.value;
   }
   Feature.update({ _id: id }, { $set: updateOperations })
     .exec()
     .then((result) => {
-      console.log(result)
-      res.status(200).json(result)
+      console.log(result);
+      res.status(200).json(result);
     })
     .catch((er) => {
-      console.log(err)
+      console.log(err);
       res.status(500).json({
         error: err,
-      })
-    })
-})
+      });
+    });
+});
 
-module.exports = router
+module.exports = router;
