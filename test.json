@@ -1,0 +1,39 @@
+{
+    "feature_file_title": "test",
+    "feature_file_type": "test",
+    "feature_file_location": "test",
+    "scenarios": [{
+            "testcase_title": "test 1",
+            "testcase_steps": [{
+                    "testcase_step_title": "test",
+                    "testcase_step_status": "PASS",
+                    "error_message": ""
+                },
+                {
+                    "testcase_step_title": "test",
+                    "testcase_step_status": "FAIL",
+                    "error_message": "test"
+                }
+            ]
+        },
+        {
+            "testcase_title": "test 2",
+            "testcase_steps": [{
+                    "testcase_step_title": "test",
+                    "testcase_step_status": "PASS",
+                    "error_message": ""
+                },
+                {
+                    "testcase_step_title": "test",
+                    "testcase_step_status": "PASS",
+                    "error_message": ""
+                }
+            ]
+        }
+    ],
+    "total_tests": "2",
+    "total_steps": "4",
+    "time_start": "101121451",
+    "time_end": "101121551",
+    "total_time": "100"
+}
