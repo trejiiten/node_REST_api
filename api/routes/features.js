@@ -4,11 +4,11 @@ const router = express.Router();
 const Feature = require("../models/feature");
 const mongoose = require("mongoose");
 
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
   Feature.find()
-    .select(
-      "feature_file_title feature_file_type feature_file_location scenarioId total_tests total_steps time_start time_end total_time _id"
-    )
+    // .select(
+    //   "feature_file_title feature_file_type feature_file_location scenarios testcase_title testcase_steps total_tests total_steps time_start time_end total_time _id"
+    // )
     .exec()
     .then((docs) => {
       const response = {
@@ -18,7 +18,18 @@ router.get("/", (req, res, next) => {
             feature_file_title: doc.feature_file_title,
             feature_file_type: doc.feature_file_type,
             feature_file_location: doc.feature_file_location,
-            scenarioId: doc.senarioId,
+            scenarios: [
+              {
+                testcase_title: doc.testcase_title,
+                testcase_steps: [
+                  {
+                    testcase_step_title: doc.testcase_step_title,
+                    testcase_step_status: doc.testcase_step_status,
+                    error_message: doc.error_message,
+                  },
+                ],
+              },
+            ],
             total_tests: doc.total_tests,
             total_steps: doc.total_steps,
             time_start: doc.time_start,
@@ -44,11 +55,22 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   const feature = new Feature({
-    _id: new mongoose.Types.ObjectId(),
+    // _id: new mongoose.Types.ObjectId(),
     feature_file_title: req.body.feature_file_title,
     feature_file_type: req.body.feature_file_type,
     feature_file_location: req.body.feature_file_location,
-    scenarioId: req.body.senarioId,
+    scenarios: [
+      {
+        testcase_title: req.body.testcase_title,
+        testcase_steps: [
+          {
+            testcase_step_title: req.body.testcase_step_title,
+            testcase_step_status: req.body.testcase_step_status,
+            error_message: req.body.error_message,
+          },
+        ],
+      },
+    ],
     total_tests: req.body.total_tests,
     total_steps: req.body.total_steps,
     time_start: req.body.time_start,

@@ -12,7 +12,7 @@ const stepRoutes = require("./api/routes/steps");
 
 mongoose.connect(
   `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_NAME}.5nxwt.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`,
-  { useNewUrlParser: true }
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 mongoose.promise = global.promise;
