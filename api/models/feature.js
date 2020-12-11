@@ -36,7 +36,7 @@ const featureSchema = new Schema({
   total_tests: Number,
   total_steps: Number,
   time_start: { type: Date, default: Date.now },
-  time_end: { type: Date, default: Date.now },
+  time_end: { type: Date },
   total_time: Number,
 });
 

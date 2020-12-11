@@ -18,18 +18,7 @@ router.get("/", async (req, res, next) => {
             feature_file_title: doc.feature_file_title,
             feature_file_type: doc.feature_file_type,
             feature_file_location: doc.feature_file_location,
-            scenarios: [
-              {
-                testcase_title: doc.testcase_title,
-                testcase_steps: [
-                  {
-                    testcase_step_title: doc.testcase_step_title,
-                    testcase_step_status: doc.testcase_step_status,
-                    error_message: doc.error_message,
-                  },
-                ],
-              },
-            ],
+            scenarios: doc.scenarios,
             total_tests: doc.total_tests,
             total_steps: doc.total_steps,
             time_start: doc.time_start,
