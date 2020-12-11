@@ -59,18 +59,7 @@ router.post("/", (req, res, next) => {
     feature_file_title: req.body.feature_file_title,
     feature_file_type: req.body.feature_file_type,
     feature_file_location: req.body.feature_file_location,
-    scenarios: [
-      {
-        testcase_title: req.body.testcase_title,
-        testcase_steps: [
-          {
-            testcase_step_title: req.body.testcase_step_title,
-            testcase_step_status: req.body.testcase_step_status,
-            error_message: req.body.error_message,
-          },
-        ],
-      },
-    ],
+    scenarios: req.body.scenarios,
     total_tests: req.body.total_tests,
     total_steps: req.body.total_steps,
     time_start: req.body.time_start,
