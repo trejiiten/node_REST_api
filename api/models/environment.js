@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const environmentSchema = mongoose.Schema({
-  featureId: String,
   os_name: String,
   os_version: String,
   branch: String,
@@ -20,6 +19,7 @@ const environmentSchema = mongoose.Schema({
   jvm_vendor: String,
   webdriver_version: String,
   features: [{ type: Schema.Types.ObjectId, ref: "Feature" }],
+  updated_on:{type: Date, default: Date.now}
 });
 
 const Environment = mongoose.model("Environment", environmentSchema);

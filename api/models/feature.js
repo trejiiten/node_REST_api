@@ -14,7 +14,8 @@ const featureSchema = new Schema({
   ],
   total_tests: Number,
   total_time: Number,
-  environments:[{type: Schema.Types.ObjectId, ref:"Environment"}]
+  environments:[{type: Schema.Types.ObjectId, ref:"Environment"}],
+  updated_on:{type: Date, default: Date.now}
 });
 
 const Feature = mongoose.model("Feature", featureSchema);
