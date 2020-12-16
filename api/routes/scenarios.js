@@ -1,23 +1,23 @@
-const express = require('express')
+const express = require("express");
 // const router = express.Router()
-const router = require('express-promise-router')()
+const router = require("express-promise-router")();
 
-const ScenariosController = require('../controllers/scenarios')
+const ScenariosController = require("../controllers/scenarios");
 
 router
-  .route('/')
+  .route("/")
   .get(ScenariosController.index)
-  .post(ScenariosController.newScenario)
+  .post(ScenariosController.newScenario);
 
 router
-  .route('/:scenarioId')
+  .route("/:scenarioId")
   .get(ScenariosController.getScenario)
   .put(ScenariosController.replaceScenario)
-  .patch(ScenariosController.updateScenario)
+  .patch(ScenariosController.updateScenario);
 
 router
-  .route('/:scenarioId/steps')
+  .route("/:scenarioId/steps")
   .get(ScenariosController.getScenarioSteps)
-  .post(ScenariosController.newScenarioStep)
+  .post(ScenariosController.newScenarioStep);
 
-module.exports = router
+module.exports = router;

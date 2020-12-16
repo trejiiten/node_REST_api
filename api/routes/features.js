@@ -1,23 +1,23 @@
-const express = require('express')
+const express = require("express");
 // const router = express.Router()
-const router = require('express-promise-router')()
+const router = require("express-promise-router")();
 
-const FeaturesController = require('../controllers/features')
+const FeaturesController = require("../controllers/features");
 
 router
-  .route('/')
+  .route("/")
   .get(FeaturesController.index)
-  .post(FeaturesController.newFeature)
+  .post(FeaturesController.newFeature);
 
 router
-  .route('/:featureId')
+  .route("/:featureId")
   .get(FeaturesController.getFeature)
   .put(FeaturesController.replaceFeature)
-  .patch(FeaturesController.updateFeature)
+  .patch(FeaturesController.updateFeature);
 
 router
-  .route('/:featureId/scenarios')
+  .route("/:featureId/scenarios")
   .get(FeaturesController.getFeatureScenarios)
-  .post(FeaturesController.newFeatureScenario)
+  .post(FeaturesController.newFeatureScenario);
 
-module.exports = router
+module.exports = router;
