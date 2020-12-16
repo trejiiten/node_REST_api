@@ -1,24 +1,25 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const environmentSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    featureId: {type: String, required: true },
-    os_name: {type: String, required: true },
-    os_version: {type: String, required: true },
-    branch: {type: String, required: true },
-    platform_architecture: {type: String, required: true },
-    user: {type: String, required: true },
-    host: {type: String, required: true },
-    address: {type: String, required: true },
-    environment: {type: String, required: true },
-    browser_name: {type: String, required: true },
-    browser_version: {type: String, required: true },
-    headless_mode: {type: String, required: true },
-    awsdev: {type: String, required: false },
-    java_version: {type: String, required: true },
-    jvm_version: {type: String, required: true },
-    jvm_vendor: {type: String, required: true },
-    webdriver_version: {type: String, required: true },
-});
+  _id: mongoose.Schema.Types.ObjectId,
+  featureId: String,
+  os_name: String,
+  os_version: String,
+  branch: String,
+  platform_architecture: String,
+  user: String,
+  host: String,
+  address: String,
+  environment: String,
+  browser_name: String,
+  browser_version: String,
+  headless_mode: String,
+  awsdev: { type: String, required: false },
+  java_version: String,
+  jvm_version: String,
+  jvm_vendor: String,
+  webdriver_version: String,
+})
 
-module.exports = mongoose.model('Environment', environmentSchema);
+const Environment = mongoose.model('Environment', environmentSchema)
+module.exports = Environment

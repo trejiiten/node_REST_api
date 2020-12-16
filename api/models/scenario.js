@@ -1,9 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const scenarioSchema = mongoose.Schema({
-  feature: { type: mongoose.Schema.Types.ObjectId, ref: "Feature" },
-  testcase_title: { type: String, required: true },
-  testcase_steps: [{ type: mongoose.Schema.Types.ObjectId, ref: "Step" }],
-});
+const scenarioSchema = new Schema({
+  feature_file: { type: Schema.Types.ObjectId, ref: 'Feature' },
+  testcase_title: String,
+  testcase_steps: [{ type: Schema.Types.ObjectId, ref: 'Step' }],
+  total_steps: Number,
+  time_start: { type: Date, default: Date.now },
+  time_end: { type: Date },
+})
 
-module.exports = mongoose.model("Scenario", scenarioSchema);
+const Scenario = mongoose.model('Scenario', scenarioSchema)
+module.exports = Scenario

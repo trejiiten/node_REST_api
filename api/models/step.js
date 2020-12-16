@@ -1,10 +1,12 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const stepSchema = mongoose.Schema({
-  scenario: { type: mongoose.Schema.Types.ObjectId, ref: "Scenario" },
-  testcase_step_title: { type: String, required: true },
-  testcase_step_status: { type: String, required: true },
+const stepSchema = Schema({
+  scenario: { type: Schema.Types.ObjectId, ref: 'Scenario' },
+  testcase_step_title: String,
+  testcase_step_status: String,
   error_message: { type: String, required: false },
-});
+})
 
-module.exports = mongoose.model("Step", stepSchema);
+const Step = mongoose.model('Step', stepSchema)
+module.exports = Step
