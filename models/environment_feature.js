@@ -1,10 +1,14 @@
-const { sequelize } = require(".");
-const Environment = require("./environment");
-const Feature = require("./feature");
+// const sequelize = require('sequelize')
+// const Environment = require('./environment')
+// const Feature = require('./feature')
 
-module.exports = (sequelize) => {
-  const Environment_Feature = sequelize.define("Environment_Feature", {}, {timestamps: false});
-  Environment.belongsToMany(Feature, {through: Environment_Feature});
-  Feature.belongsToMany(Environment, {through: Environment_Feature});
-  return Environment_Feature;
-};
+// module.exports = (sequelize) => {
+//   const EnvironmentFeature = sequelize.define(
+//     'Environment_Feature',
+//     {},
+//     { timestamps: false }
+//   )
+//   Environment.belongsToMany(Feature, { through: EnvironmentFeature })
+//   Feature.belongsToMany(Environment, { through: EnvironmentFeature })
+//   return EnvironmentFeature
+// }
