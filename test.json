@@ -1,39 +1,1465 @@
 {
-    "feature_file_title": "test",
-    "feature_file_type": "test",
-    "feature_file_location": "test",
-    "scenarios": [{
-            "testcase_title": "test 1",
+    "address": "10.101.202.23",
+    "jvm_vendor": "Oracle Corporation",
+    "os_version": "10.0",
+    "platform_architecture": "amd64",
+    "branch": "development",
+    "jvm_version": "14.0.1+7",
+    "browser_name": "chrome",
+    "features": [{
+        "time_start": "2021-01-29T22:13:03.575",
+        "feature_file_type": "TopCompanies",
+        "feature_file_title": "129CENTURY.feature",
+        "feature_file_location": "TopCompanies\/129CENTURY.feature",
+        "total_steps": 215,
+        "scenarios": [{
+            "time_start": "2021-01-29T22:02:21.660",
+            "testcase_title": "Preconditions: Precondidtions before scenarios execution- set data #329712",
+            "time_end": "2021-01-29T22:02:53.500",
+            "total_time": "00m 31s",
             "testcase_steps": [{
-                    "testcase_step_title": "test",
-                    "testcase_step_status": "PASS",
-                    "error_message": ""
-                },
-                {
-                    "testcase_step_title": "test",
-                    "testcase_step_status": "FAIL",
-                    "error_message": "test"
-                }
-            ]
-        },
-        {
-            "testcase_title": "test 2",
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Store the following elements [[string, CENTURY 21, company_name], [string, , company_id], [string, Demo (52150DEMO4), branch_name], [string, 52150DEMO4, branch_id], [string, PDV Test Billing, billing_account], [string, Agent, QA (c7378ae5a0), user_name], [string, c7378ae5a0, user_id], [string, pdvimg, img_name]]"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Impersonate Agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - Empty the cart"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:02:53.868",
+            "testcase_title": "Setup: Activate test billing account",
+            "time_end": "2021-01-29T22:02:59.514",
+            "total_time": "00m 05s",
             "testcase_steps": [{
-                    "testcase_step_title": "test",
-                    "testcase_step_status": "PASS",
-                    "error_message": ""
-                },
-                {
-                    "testcase_step_title": "test",
-                    "testcase_step_status": "PASS",
-                    "error_message": ""
-                }
-            ]
-        }
-    ],
-    "total_tests": "2",
-    "total_steps": "4",
-    "time_start": "101121451",
-    "time_end": "101121551",
-    "total_time": "100"
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Navigate to Xadmin"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - I click on link(Billing Accounts) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - Select stored value  company_name in Select a Company dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - Click Update button under\/for\/next to stored value PDV Test Billing"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on radiobutton(Yes)|text(Active) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(Save) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - Verify text This billing account has been updated! is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:02:59.556",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 236634; Mailing, Standard, Radius List, Billing, MAIN: Branch level",
+            "time_end": "2021-01-29T22:03:23.107",
+            "total_time": "00m 23s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate Branch stored user branch_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(UPLOAD YOUR OWN DESIGNS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Landscape Large Postcard - Mailing) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "error_message": "ERROR: Expected condition failed: waiting for element to be clickable: By.xpath: \/\/*[@xd-qa-type='dropdown' and @xd-qa-name='User'] (tried for 5 second(s) with 500 milliseconds interval)\nCAUSE: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: \/\/*[@xd-qa-type='dropdown' and @xd-qa-name='User'] (tried for 5 second(s) with 500 milliseconds interval)",
+                "testcase_step_status": "Fail",
+                "testcase_step_title": "I click on dropdown(User) - 3"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:05:39.780",
+            "testcase_title": "Address list : Removing testing radius list",
+            "time_end": "2021-01-29T22:06:00.853",
+            "total_time": "00m 21s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I hover over dropdown(profile)"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - Wait for 1 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on dropdown_item(Profile) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on link(Manage Address Lists) - 3"
+            }, {
+                "testcase_step_status": "Skip",
+                "testcase_step_title": "Remove address list"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I hover over dropdown(profile)"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - Wait for 1 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on dropdown_item(Profile) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on link(Manage Address Lists) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - Remove Radius 236638:210129100518118 address list"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:12:54.775",
+            "testcase_title": "Cancel order: Canceling order",
+            "time_end": "2021-01-29T22:13:03.544",
+            "total_time": "00m 08s",
+            "testcase_steps": [{
+                "testcase_step_status": "Skip",
+                "testcase_step_title": "Cancel stored order ID null"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991127"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991138"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991148"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991148"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991158"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:03:46.216",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 236634; Mailing, Standard, Radius List, Billing, MAIN: Agent level",
+            "time_end": "2021-01-29T22:05:39.739",
+            "total_time": "01m 53s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate Agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(UPLOAD YOUR OWN DESIGNS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Landscape Large Postcard - Mailing) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - Wait for 5 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - Store Order ID label as order_id - Stored Order ID: 10991127"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "9 - Type PDV Order DO NOT PRINT in Name this order field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "10 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "11 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "12 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "13 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "14 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "15 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "16 - Proof order"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "17 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "18 - I click on radiobutton(Use our Complete Mailing Service) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "19 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "20 - I click on radiobutton(STANDARD MAIL) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "21 - Verify radio button \"STANDARD MAIL\" is selected"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "22 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "23 - I click on link(Radius List) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "24 - Type the following [[1301 NE Loop 820, Property Address], [76137, Property Zip Code], [100, Search Quantity]]"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "25 - Select Single and Multi-family in Address Type dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "26 - I click on button(Search) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "27 - Generate a unique string that starts with Radius 236638: and store as list_name"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "28 - Type stored value list_name in Name your list field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "29 - Check I agree to the terms and conditions checkbox"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "30 - I click on button(Approved) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "31 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "32 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "33 - Select PDV Test Billing ( Account for test scenarios ) in Billing dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "34 - Store 0.00 as exp_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "35 - Store AMOUNT DUE FOR THIS ORDER field next to stored value order_id as act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "36 - Verify stored value exp_amount equals stored value act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "37 - Proceed to checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "38 - I complete checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "39 - Verify text Thank you for your purchase! Your checkout is now complete. is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "40 - Click Order Details button under\/for\/next to stored value 10991127"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "41 - Verify text PDV Order DO NOT PRINT is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "42 - Verify text Standard Mail Service is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "43 - Verify text stored value list_name is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "44 - Verify text stored value billing_account is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:06:09.223",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 322929; Shipping, GROUND_HOME_DELIVERY, Billing, MAIN: Branch level",
+            "time_end": "2021-01-29T22:08:07.717",
+            "total_time": "01m 58s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate branch stored user branch_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(PROPERTY POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(JUST LISTED \/ JUST SOLD POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Just Listed Just Sold (01)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(SELECT BACK TEMPLATE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - I click on template_back(NEW LOGO Standard Large 01) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "9 - I click on dropdown(User) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "10 - Wait for 2 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "11 - I click on dropdown_item(Agent, QA (c7378ae5a0)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "12 - I click on button(Confirm Selection) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "13 - Wait for 5 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "14 - Store Order ID label as order_id - Stored Order ID: 10991138"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "15 - Type PDV Order DO NOT PRINT in Name this order field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "16 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "17 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "18 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "19 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "20 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "21 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "22 - Proof order"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "23 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "24 - I click on radiobutton(Ship Order to me) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "25 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "26 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "27 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "28 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "29 - I click on radiobutton(Ground Home) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "30 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "31 - Select PDV Test Billing ( Account for test scenarios ) in Billing dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "32 - Store 0.00 as exp_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "33 - Store AMOUNT DUE FOR THIS ORDER field next to stored value order_id as act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "34 - Verify stored value exp_amount equals stored value act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "35 - Proceed to checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "36 - I complete checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "37 - Verify text Thank you for your purchase! Your checkout is now complete. is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "38 - Click Order Details button under\/for\/next to stored value 10991138"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "39 - Verify text PDV Order DO NOT PRINT is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "40 - Verify text Shipping Address is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "41 - Verify text Ground is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "42 - Verify text stored value billing_account is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:08:16.276",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 322929; Shipping, GROUND_HOME_DELIVERY, Billing, MAIN: Agent level",
+            "time_end": "2021-01-29T22:10:20.585",
+            "total_time": "02m 04s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate Agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(PROPERTY POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(JUST LISTED \/ JUST SOLD POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Just Listed Just Sold (01)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(SELECT BACK TEMPLATE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - I click on template_back(NEW LOGO Standard Large 01) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "9 - Wait for 5 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "10 - Store Order ID label as order_id - Stored Order ID: 10991148"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "11 - Type PDV Order DO NOT PRINT in Name this order field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "12 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "13 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "14 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "15 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "16 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "17 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "18 - Proof order"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "19 - I click on radiobutton(Ship Order to me) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "20 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "21 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "22 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "23 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "24 - I click on radiobutton(Ground Home) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "25 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "26 - Select PDV Test Billing ( Account for test scenarios ) in Billing dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "27 - Store 0.00 as exp_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "28 - Store AMOUNT DUE FOR THIS ORDER field next to stored value order_id as act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "29 - Verify stored value exp_amount equals stored value act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "30 - Proceed to checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "31 - I complete checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "32 - Verify text Thank you for your purchase! Your checkout is now complete. is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "33 - Click Order Details button under\/for\/next to stored value 10991148"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "34 - Verify text PDV Order DO NOT PRINT is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "35 - Verify text Shipping Address is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "36 - Verify text Ground is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "37 - Verify text stored value billing_account is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:10:29.261",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 325761; Shipping, FEDEX_2_DAY, Billing, MAIN : Branch Level",
+            "time_end": "2021-01-29T22:10:53.260",
+            "total_time": "00m 23s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate branch stored user branch_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(PROPERTY POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(JUST LISTED \/ JUST SOLD POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Just Listed Just Sold SmPc (02)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(SELECT BACK TEMPLATE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - I click on template_back(NEW LOGO Standard Small 04) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "error_message": "ERROR: Expected condition failed: waiting for element to be clickable: By.xpath: \/\/*[@xd-qa-type='dropdown' and @xd-qa-name='User'] (tried for 5 second(s) with 500 milliseconds interval)\nCAUSE: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: \/\/*[@xd-qa-type='dropdown' and @xd-qa-name='User'] (tried for 5 second(s) with 500 milliseconds interval)",
+                "testcase_step_status": "Fail",
+                "testcase_step_title": "I click on dropdown(User) - 3"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:11:01.117",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 325761; Shipping, FEDEX_2_DAY, Billing, MAIN : Agent Level",
+            "time_end": "2021-01-29T22:12:54.754",
+            "total_time": "01m 53s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate Agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(PROPERTY POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(JUST LISTED \/ JUST SOLD POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Just Listed Just Sold SmPc (02)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(SELECT BACK TEMPLATE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - I click on template_back(NEW LOGO Standard Small 04) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "9 - Wait for 5 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "10 - Store Order ID label as order_id - Stored Order ID: 10991158"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "11 - Type PDV Order DO NOT PRINT in Name this order field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "12 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "13 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "14 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "15 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "16 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "17 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "18 - Select Just Listed in Order Type dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "19 - Proof order"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "20 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "21 - I click on radiobutton(Ship Order to me) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "22 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "23 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "24 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "25 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "26 - I click on radiobutton(FedEx 2Day) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "27 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "28 - Select PDV Test Billing ( Account for test scenarios ) in Billing dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "29 - Store 0.00 as exp_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "30 - Store AMOUNT DUE FOR THIS ORDER field next to stored value order_id as act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "31 - Verify stored value exp_amount equals stored value act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "32 - Proceed to checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "33 - I complete checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "34 - Verify text Thank you for your purchase! Your checkout is now complete. is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "35 - Click Order Details button under\/for\/next to stored value 10991158"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "36 - Verify text PDV Order DO NOT PRINT is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "37 - Verify text Shipping Address is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "38 - Verify text FedEx 2Day is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "39 - Verify text stored value billing_account is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:13:03.575",
+            "testcase_title": "Teardown: Deactivate test billing account",
+            "time_end": "2021-01-29T22:13:08.241",
+            "total_time": "00m 04s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Navigate to Xadmin"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - I click on link(Billing Accounts) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - Select stored value  company_name in Select a Company dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - Click Update button under\/for\/next to stored value PDV Test Billing"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on radiobutton(No)|text(Active) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(Save) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - Verify text This billing account has been updated! is visible"
+            }]
+        }],
+        "total_tests": 11,
+        "time_end": "2021-01-29T22:13:08.241",
+        "total_time": "09m 49s"
+    },
+    {
+        "time_start": "2021-01-29T22:13:03.575",
+        "feature_file_type": "TopCompanies",
+        "feature_file_title": "129CENTURY.feature",
+        "feature_file_location": "TopCompanies\/129CENTURY.feature",
+        "total_steps": 215,
+        "scenarios": [{
+            "time_start": "2021-01-29T22:02:21.660",
+            "testcase_title": "Preconditions: Precondidtions before scenarios execution- set data #329712",
+            "time_end": "2021-01-29T22:02:53.500",
+            "total_time": "00m 31s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Store the following elements [[string, CENTURY 21, company_name], [string, , company_id], [string, Demo (52150DEMO4), branch_name], [string, 52150DEMO4, branch_id], [string, PDV Test Billing, billing_account], [string, Agent, QA (c7378ae5a0), user_name], [string, c7378ae5a0, user_id], [string, pdvimg, img_name]]"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Impersonate Agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - Empty the cart"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:02:53.868",
+            "testcase_title": "Setup: Activate test billing account",
+            "time_end": "2021-01-29T22:02:59.514",
+            "total_time": "00m 05s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Navigate to Xadmin"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - I click on link(Billing Accounts) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - Select stored value  company_name in Select a Company dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - Click Update button under\/for\/next to stored value PDV Test Billing"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on radiobutton(Yes)|text(Active) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(Save) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - Verify text This billing account has been updated! is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:02:59.556",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 236634; Mailing, Standard, Radius List, Billing, MAIN: Branch level",
+            "time_end": "2021-01-29T22:03:23.107",
+            "total_time": "00m 23s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate Branch stored user branch_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(UPLOAD YOUR OWN DESIGNS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Landscape Large Postcard - Mailing) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "error_message": "ERROR: Expected condition failed: waiting for element to be clickable: By.xpath: \/\/*[@xd-qa-type='dropdown' and @xd-qa-name='User'] (tried for 5 second(s) with 500 milliseconds interval)\nCAUSE: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: \/\/*[@xd-qa-type='dropdown' and @xd-qa-name='User'] (tried for 5 second(s) with 500 milliseconds interval)",
+                "testcase_step_status": "Fail",
+                "testcase_step_title": "I click on dropdown(User) - 3"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:05:39.780",
+            "testcase_title": "Address list : Removing testing radius list",
+            "time_end": "2021-01-29T22:06:00.853",
+            "total_time": "00m 21s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I hover over dropdown(profile)"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - Wait for 1 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on dropdown_item(Profile) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on link(Manage Address Lists) - 3"
+            }, {
+                "testcase_step_status": "Skip",
+                "testcase_step_title": "Remove address list"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I hover over dropdown(profile)"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - Wait for 1 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on dropdown_item(Profile) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on link(Manage Address Lists) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - Remove Radius 236638:210129100518118 address list"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:12:54.775",
+            "testcase_title": "Cancel order: Canceling order",
+            "time_end": "2021-01-29T22:13:03.544",
+            "total_time": "00m 08s",
+            "testcase_steps": [{
+                "testcase_step_status": "Skip",
+                "testcase_step_title": "Cancel stored order ID null"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991127"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991138"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991148"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991148"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Cancel order 10991158"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:03:46.216",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 236634; Mailing, Standard, Radius List, Billing, MAIN: Agent level",
+            "time_end": "2021-01-29T22:05:39.739",
+            "total_time": "01m 53s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate Agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(UPLOAD YOUR OWN DESIGNS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Landscape Large Postcard - Mailing) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - Wait for 5 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - Store Order ID label as order_id - Stored Order ID: 10991127"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "9 - Type PDV Order DO NOT PRINT in Name this order field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "10 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "11 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "12 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "13 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "14 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "15 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "16 - Proof order"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "17 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "18 - I click on radiobutton(Use our Complete Mailing Service) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "19 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "20 - I click on radiobutton(STANDARD MAIL) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "21 - Verify radio button \"STANDARD MAIL\" is selected"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "22 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "23 - I click on link(Radius List) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "24 - Type the following [[1301 NE Loop 820, Property Address], [76137, Property Zip Code], [100, Search Quantity]]"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "25 - Select Single and Multi-family in Address Type dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "26 - I click on button(Search) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "27 - Generate a unique string that starts with Radius 236638: and store as list_name"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "28 - Type stored value list_name in Name your list field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "29 - Check I agree to the terms and conditions checkbox"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "30 - I click on button(Approved) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "31 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "32 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "33 - Select PDV Test Billing ( Account for test scenarios ) in Billing dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "34 - Store 0.00 as exp_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "35 - Store AMOUNT DUE FOR THIS ORDER field next to stored value order_id as act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "36 - Verify stored value exp_amount equals stored value act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "37 - Proceed to checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "38 - I complete checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "39 - Verify text Thank you for your purchase! Your checkout is now complete. is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "40 - Click Order Details button under\/for\/next to stored value 10991127"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "41 - Verify text PDV Order DO NOT PRINT is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "42 - Verify text Standard Mail Service is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "43 - Verify text stored value list_name is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "44 - Verify text stored value billing_account is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:06:09.223",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 322929; Shipping, GROUND_HOME_DELIVERY, Billing, MAIN: Branch level",
+            "time_end": "2021-01-29T22:08:07.717",
+            "total_time": "01m 58s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate branch stored user branch_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(PROPERTY POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(JUST LISTED \/ JUST SOLD POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Just Listed Just Sold (01)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(SELECT BACK TEMPLATE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - I click on template_back(NEW LOGO Standard Large 01) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "9 - I click on dropdown(User) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "10 - Wait for 2 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "11 - I click on dropdown_item(Agent, QA (c7378ae5a0)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "12 - I click on button(Confirm Selection) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "13 - Wait for 5 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "14 - Store Order ID label as order_id - Stored Order ID: 10991138"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "15 - Type PDV Order DO NOT PRINT in Name this order field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "16 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "17 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "18 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "19 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "20 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "21 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "22 - Proof order"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "23 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "24 - I click on radiobutton(Ship Order to me) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "25 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "26 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "27 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "28 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "29 - I click on radiobutton(Ground Home) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "30 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "31 - Select PDV Test Billing ( Account for test scenarios ) in Billing dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "32 - Store 0.00 as exp_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "33 - Store AMOUNT DUE FOR THIS ORDER field next to stored value order_id as act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "34 - Verify stored value exp_amount equals stored value act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "35 - Proceed to checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "36 - I complete checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "37 - Verify text Thank you for your purchase! Your checkout is now complete. is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "38 - Click Order Details button under\/for\/next to stored value 10991138"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "39 - Verify text PDV Order DO NOT PRINT is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "40 - Verify text Shipping Address is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "41 - Verify text Ground is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "42 - Verify text stored value billing_account is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:08:16.276",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 322929; Shipping, GROUND_HOME_DELIVERY, Billing, MAIN: Agent level",
+            "time_end": "2021-01-29T22:10:20.585",
+            "total_time": "02m 04s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate Agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(PROPERTY POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(JUST LISTED \/ JUST SOLD POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Just Listed Just Sold (01)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(SELECT BACK TEMPLATE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - I click on template_back(NEW LOGO Standard Large 01) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "9 - Wait for 5 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "10 - Store Order ID label as order_id - Stored Order ID: 10991148"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "11 - Type PDV Order DO NOT PRINT in Name this order field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "12 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "13 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "14 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "15 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "16 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "17 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "18 - Proof order"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "19 - I click on radiobutton(Ship Order to me) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "20 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "21 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "22 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "23 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "24 - I click on radiobutton(Ground Home) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "25 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "26 - Select PDV Test Billing ( Account for test scenarios ) in Billing dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "27 - Store 0.00 as exp_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "28 - Store AMOUNT DUE FOR THIS ORDER field next to stored value order_id as act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "29 - Verify stored value exp_amount equals stored value act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "30 - Proceed to checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "31 - I complete checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "32 - Verify text Thank you for your purchase! Your checkout is now complete. is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "33 - Click Order Details button under\/for\/next to stored value 10991148"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "34 - Verify text PDV Order DO NOT PRINT is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "35 - Verify text Shipping Address is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "36 - Verify text Ground is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "37 - Verify text stored value billing_account is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:10:29.261",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 325761; Shipping, FEDEX_2_DAY, Billing, MAIN : Branch Level",
+            "time_end": "2021-01-29T22:10:53.260",
+            "total_time": "00m 23s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate branch stored user branch_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(PROPERTY POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(JUST LISTED \/ JUST SOLD POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Just Listed Just Sold SmPc (02)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(SELECT BACK TEMPLATE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - I click on template_back(NEW LOGO Standard Small 04) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "error_message": "ERROR: Expected condition failed: waiting for element to be clickable: By.xpath: \/\/*[@xd-qa-type='dropdown' and @xd-qa-name='User'] (tried for 5 second(s) with 500 milliseconds interval)\nCAUSE: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: \/\/*[@xd-qa-type='dropdown' and @xd-qa-name='User'] (tried for 5 second(s) with 500 milliseconds interval)",
+                "testcase_step_status": "Fail",
+                "testcase_step_title": "I click on dropdown(User) - 3"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:11:01.117",
+            "testcase_title": "Testing main flow for: CENTURY 21 company; template id = 325761; Shipping, FEDEX_2_DAY, Billing, MAIN : Agent Level",
+            "time_end": "2021-01-29T22:12:54.754",
+            "total_time": "01m 53s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Impersonate Agent stored user user_id"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - I click on tile(PROPERTY POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - I click on tile(JUST LISTED \/ JUST SOLD POSTCARDS) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on template(Just Listed Just Sold SmPc (02)) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(SELECT BACK TEMPLATE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - I click on template_back(NEW LOGO Standard Small 04) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "8 - I click on button(CUSTOMIZE) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "9 - Wait for 5 seconds"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "10 - Store Order ID label as order_id - Stored Order ID: 10991158"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "11 - Type PDV Order DO NOT PRINT in Name this order field"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "12 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "13 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "14 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "15 - I click on button(Add Photos) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "16 - Browse 344.jpg"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "17 - Click Continue button on Upload form"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "18 - Select Just Listed in Order Type dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "19 - Proof order"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "20 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "21 - I click on radiobutton(Ship Order to me) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "22 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "23 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "24 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "25 - Close popup"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "26 - I click on radiobutton(FedEx 2Day) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "27 - I click on button(Next) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "28 - Select PDV Test Billing ( Account for test scenarios ) in Billing dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "29 - Store 0.00 as exp_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "30 - Store AMOUNT DUE FOR THIS ORDER field next to stored value order_id as act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "31 - Verify stored value exp_amount equals stored value act_amount"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "32 - Proceed to checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "33 - I complete checkout"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "34 - Verify text Thank you for your purchase! Your checkout is now complete. is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "35 - Click Order Details button under\/for\/next to stored value 10991158"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "36 - Verify text PDV Order DO NOT PRINT is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "37 - Verify text Shipping Address is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "38 - Verify text FedEx 2Day is visible"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "39 - Verify text stored value billing_account is visible"
+            }]
+        }, {
+            "time_start": "2021-01-29T22:13:03.575",
+            "testcase_title": "Teardown: Deactivate test billing account",
+            "time_end": "2021-01-29T22:13:08.241",
+            "total_time": "00m 04s",
+            "testcase_steps": [{
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "1 - Navigate to Xadmin"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "2 - I click on link(Billing Accounts) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "3 - Select stored value  company_name in Select a Company dropdown"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "4 - Click Update button under\/for\/next to stored value PDV Test Billing"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "5 - I click on radiobutton(No)|text(Active) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "6 - I click on button(Save) - 3"
+            }, {
+                "testcase_step_status": "Pass",
+                "testcase_step_title": "7 - Verify text This billing account has been updated! is visible"
+            }]
+        }],
+        "total_tests": 11,
+        "time_end": "2021-01-29T22:13:08.241",
+        "total_time": "09m 49s"
+    }],
+    "environment": "PROD",
+    "host": "XPD-0338",
+    "java_version": "14",
+    "os_name": "Windows 10",
+    "browser_version": "88.0.4324.104",
+    "user": "trings",
+    "web_driver_version": "87.0.4280.88 ",
+    "headless_mode": "true"
 }

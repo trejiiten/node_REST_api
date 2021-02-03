@@ -1,150 +1,83 @@
-const Sequelize = require('sequelize')
-// module.exports = (sequelize, DataTypes) => {
-//   const Environment = sequelize.define("Environment", {
-// os_name: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// os_version: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// branch: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// platform_architecture: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// user: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// host: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// address: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// environment: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// browser_name: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// browser_version: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// headless_mode: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// awsdev: {
-//   type: DataTypes.STRING,
-//   allowNull: true,
-// },
-// java_version: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// jvm_version: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// jvm_vendor: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-// webdriver_version: {
-//   type: DataTypes.STRING,
-//   allowNull: false,
-// },
-//   });
-//   return Environment;
-// };
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Environment extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      this.environmentFeatureAssociation = this.belongsToMany(models.Feature, {
+        through:"environment_feature",
+        uniqueKey:false,
+        onDelete: "CASCADE",
+        timestamps:false,
+        foreignKey: {
+          name:"environment_id",
+        },as:"features"
+      });
+    }
 
-module.exports = class EnvironmentModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        os_name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        os_version: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        branch: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        platform_architecture: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        user: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        host: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        address: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        environment: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        browser_name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        browser_version: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        headless_mode: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        awsdev: {
-          type: DataTypes.STRING,
-          allowNull: true,
-        },
-        java_version: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        jvm_version: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        jvm_vendor: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        webdriver_version: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
+  }
+  Environment.init(
+    {
+      os_name: {
+        type: DataTypes.STRING,
       },
-      {
-        tableName: 'ENVIRONMENT',
-        sequelize,
-      }
-    )
-  }
-  static associate(models) {
-    this.environmentFeatureAssociation = this.belongsToMany(models.FeatureModel)
-  }
-}
+      os_version: {
+        type: DataTypes.STRING,
+      },
+      branch: {
+        type: DataTypes.STRING,
+      },
+      platform_architecture: {
+        type: DataTypes.STRING,
+      },
+      user: {
+        type: DataTypes.STRING,
+      },
+      host: {
+        type: DataTypes.STRING,
+      },
+      address: {
+        type: DataTypes.STRING,
+        unique:true,
+      },
+      environment: {
+        type: DataTypes.STRING,
+      },
+      browser_name: {
+        type: DataTypes.STRING,
+      },
+      browser_version: {
+        type: DataTypes.STRING,
+      },
+      headless_mode: {
+        type: DataTypes.STRING,
+      },
+      awsdev: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      java_version: {
+        type: DataTypes.STRING,
+      },
+      jvm_version: {
+        type: DataTypes.STRING,
+      },
+      jvm_vendor: {
+        type: DataTypes.STRING,
+      },
+      web_driver_version: {
+        type: DataTypes.STRING,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Environment",
+      tableName: "environment",
+    }
+  );
+  return Environment;
+};

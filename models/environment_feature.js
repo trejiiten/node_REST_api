@@ -1,14 +1,25 @@
-// const sequelize = require('sequelize')
-// const Environment = require('./environment')
-// const Feature = require('./feature')
-
-// module.exports = (sequelize) => {
-//   const EnvironmentFeature = sequelize.define(
-//     'Environment_Feature',
-//     {},
-//     { timestamps: false }
-//   )
-//   Environment.belongsToMany(Feature, { through: EnvironmentFeature })
-//   Feature.belongsToMany(Environment, { through: EnvironmentFeature })
-//   return EnvironmentFeature
-// }
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Environment_Feature extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  };
+  Environment_Feature.init({
+    environment_id: DataTypes.INTEGER,
+    feature_id: DataTypes.INTEGER
+  }, {
+    sequelize,
+    tableName: 'environment_feature',
+    modelName: 'Environment_Feature',
+  });
+  return Environment_Feature;
+};

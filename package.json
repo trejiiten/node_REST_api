@@ -4,8 +4,8 @@
   "description": "RESTful API using node.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "test": "nodemon app.js",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",

@@ -1,19 +1,27 @@
-const { sequelize } = require("./models");
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const environmentRoutes = require("./routes/environments");
 const featureRoutes = require("./routes/features");
 const scenarioRoutes = require("./routes/scenarios");
 const stepRoutes = require("./routes/steps");
 
+mongoose.connect(
+  `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_NAME}.5nxwt.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`,
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+mongoose.promise = global.promise;
+
 // Logging
 app.use(morgan("dev"));
 // Parse json req
-app.use(express.urlencoded({ limit:'50mb', extended: false }));
-app.use(express.json({limit:'50mb'}));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // CORS headers
 app.use((req, res, next) => {
@@ -52,16 +60,4 @@ app.use((error, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
-
-app.use(express.urlencoded({ extended: true}));
-app.use(express.json());
-
-app.listen(PORT, async ()=>{
-  console.log(`listening on: http://localhost:${PORT}`)
-  // await sequelize.authenticate();
-  await sequelize.sync({force: true});
-  console.log('Database connected!')
-});
-
- module.exports = app;
+module.exports = app;

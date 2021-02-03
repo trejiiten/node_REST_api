@@ -1,50 +1,51 @@
-const sequelize = require('sequelize')
-// const Scenario = require('./scenario')
-
-// module.exports = (sequelize, DataTypes) => {
-//   const Feature = sequelize.define('Feature', {
-//     feature_file_title: { type: DataTypes.STRING, unique: true },
-//     feature_file_type: DataTypes.STRING,
-//     feature_file_location: DataTypes.STRING,
-//     scenarios: [
-//       {
-//         type: Schema.Types.ObjectId,
-//         ref: 'Scenario',
-//       },
-//     ],
-//     total_tests: DataTypes.INTEGER,
-//     total_time: DataTypes.INTEGER,
-//   })
-//   Feature.hasMany(Scenario)
-//   return Feature
-// }
-
-module.exports = class FeatureModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        feature_file_title: { type: DataTypes.STRING, unique: true },
-        feature_file_type: DataTypes.STRING,
-        feature_file_location: DataTypes.STRING,
-        scenarios: [
-          {
-            type: Schema.Types.ObjectId,
-            ref: 'Scenario',
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Feature extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      this.environmentFeatureAssociation = this.belongsToMany(
+        models.Environment,
+        {
+          through: "environment_feature",
+          uniqueKey: false,
+          onDelete: "CASCADE",
+          timestamps: false,
+          foreignKey: {
+            name: "feature_id",
+            allowNull: false,
           },
-        ],
-        total_tests: DataTypes.INTEGER,
-        total_time: DataTypes.INTEGER,
-      },
-      {
-        tableName: 'FEATURE',
-        sequelize,
-      }
-    )
+        }
+      );
+      this.featureScenariosAssociation = this.hasMany(models.Scenario, {
+        onDelete: "CASCADE",
+        foreignKey: {
+          allowNull: false,
+        }, as:"scenarios"
+      });
+    }
+
   }
-  static associate(models) {
-    this.featureEnvironmentAssociation = this.belongsToMany(
-      models.EnvironmentModel
-    )
-    this.featureScenariosAssociation = this.hasMany(models.ScenarioModel)
-  }
-}
+  Feature.init(
+    {
+      feature_file_title: { type: DataTypes.STRING, unique: true },
+      feature_file_type: DataTypes.STRING,
+      feature_file_location: DataTypes.STRING,
+      total_tests: DataTypes.INTEGER,
+      total_steps: DataTypes.INTEGER,
+      time_start: DataTypes.STRING,
+      time_end: DataTypes.STRING,
+      total_time: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Feature",
+      tableName: "feature",
+    }
+  );
+  return Feature;
+};

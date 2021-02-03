@@ -1,36 +1,42 @@
-const sequelize = require('sequelize')
-const Scenario = require('./scenario')
-
-// module.exports = (sequelize, DataTypes) => {
-//   const Step = sequelize.define(
-//     'Step',
-//     {
-//       testcase_step_title: DataTypes.STRING,
-//       testcase_step_status: DataTypes.STRING,
-//       error_message: { type: DataTypes.TEXT, require: false, allowNull: true },
-//     },
-//     { timestamp: false }
-//   )
-//   Step.belongsTo(Scenario)
-//   return Step
-// }
-
-module.exports = class StepModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        testcase_step_title: DataTypes.STRING,
-        testcase_step_status: DataTypes.STRING,
-        error_message: {
-          type: DataTypes.TEXT,
-          require: false,
-          allowNull: true,
-        },
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Step extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      this.stepsScenarioAssociation = this.belongsTo(models.Scenario, {
+        onDelete: "CASCADE",
+        foreignKey: {
+          allowNull: false,
+        }
+      });
+    }
+  }
+  Step.init(
+    {
+      id:{
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true
       },
-      { timestamp: false, tableName: 'STEP', sequelize }
-    )
-  }
-  static associate(models) {
-    this.stepsScenarioAssociation = this.belongsTo(models.ScenarioModel)
-  }
-}
+      testcase_step_title: DataTypes.TEXT,
+      testcase_step_status: DataTypes.STRING,
+      error_message: {
+        type: DataTypes.TEXT,
+        require: false,
+        allowNull: true,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Step",
+      tableName: "step",
+    }
+  );
+  return Step;
+};
