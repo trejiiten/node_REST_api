@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       this.featureScenariosAssociation = this.hasMany(models.Scenario, {
         onDelete: "CASCADE",
         foreignKey: {
+          field: "featureId",
           allowNull: false,
         }, as:"scenarios"
       });

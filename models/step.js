@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.stepsScenarioAssociation = this.belongsTo(models.Scenario, {
         onDelete: "CASCADE",
-        foreignKey: {
-          allowNull: false,
-        }
+        // foreignKey: {
+        //   allowNull: false,
+        // }
       });
     }
   }

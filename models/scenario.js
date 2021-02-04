@@ -10,13 +10,15 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.scenariosFeatureAssociation = this.belongsTo(models.Feature, {
         onDelete: "CASCADE",
-        foreignKey: {
-          allowNull: false,
-        }
+        // foreignKey: {
+          
+        //   allowNull: false,
+        // }
       });
       this.scenarioStepsAssociation = this.hasMany(models.Step, {
         onDelete: "CASCADE",
         foreignKey: {
+          field: "scenarioId",
           allowNull: false,
         }, as: "testcase_steps"
       });
@@ -25,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Scenario.init(
     {
-      testcase_title: {type:DataTypes.STRING, unique:true},
+      testcase_title: DataTypes.TEXT,
       time_start: DataTypes.STRING,
       time_end: DataTypes.STRING,
       total_time: DataTypes.STRING,
