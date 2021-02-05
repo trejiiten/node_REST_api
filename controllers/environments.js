@@ -13,7 +13,20 @@ const scenario = require("../models/scenario");
 module.exports = {
   index: async (req, res, next) => {
     try {
-      const environments = await Environment.findAll({ include: [Feature] });
+      const environments = await Environment.findAll({where: { address: body.address, environment: body.environment },
+        include: [
+          {
+            model: Feature,
+            as: "features",
+            include: [
+              {
+                model: Scenario,
+                as: "scenarios",
+                include: [{ model: Step, as: "testcase_steps" }],
+              },
+            ],
+          },
+        ],});
       res.status(201).json(environments);
     } catch (err) {
       next(err);
@@ -21,11 +34,26 @@ module.exports = {
   },
   newEnvironment: async (req, res, next) => {
     const body = req.body;
-    const environmentAddress = { where: { address: body.address, environment: body.environment } };
+    const environmentAndNestedData = {
+      where: { address: body.address, environment: body.environment },
+      include: [
+        {
+          model: Feature,
+          as: "features",
+          include: [
+            {
+              model: Scenario,
+              as: "scenarios",
+              include: [{ model: Step, as: "testcase_steps" }],
+            },
+          ],
+        },
+      ],
+    };
     let result = null;
     const bodyFeatures = body.features;
     try {
-      let currEnvironment = await Environment.findOne(environmentAddress,{include:[{model:Feature, as:"features", include:[{model:Scenario, as:"scenarios", include:[{model:Step, as:"testcase_steps"}]}]}]});
+      let currEnvironment = await Environment.findOne(environmentAndNestedData);
       if (currEnvironment == null) {
         let newEnvironment = null;
         try {
@@ -44,31 +72,19 @@ module.exports = {
           next,
           currEnvironment
         );
-        featuresPresent = await Feature.findAll();
-        for await (const f of body.features){
-          await currEnvironment.addFeature(f,{as:"features"});
-
-        }
-        console.log(currEnvironment);
-        await Environment.update({
-          where: { address: body.address },
-        });
+        // const featuresPresent = await Feature.findAll({
+        //   include: [
+        //     {
+        //       model: Scenario,
+        //       as: "scenarios",
+        //       include: [{ model: Step, as: "testcase_steps" }],
+        //     },
+        //   ],
+        // });
+        // let example = await currEnvironment.setFeature(featuresPresent);
+        // console.log(example);
       }
-      result = await Environment.findOne(environmentAddress, {
-        include: [
-          {
-            model: Feature,
-            as: "features",
-            include: [
-              {
-                model: Scenario,
-                as: "scenarios",
-                include: [{ model: Step, as: "testcase_steps" }],
-              },
-            ],
-          },
-        ],
-      });
+      result = await Environment.findOne(environmentAndNestedData);
 
       res.status(200).json(result);
     } catch (err) {
@@ -143,8 +159,23 @@ async function createNewFeatureOrAddNewStepsToExistingFeature(
       ],
     });
     if (!currFeature) {
-      let newFeature = await createNewFeature(feature, next);
-      await environment.addFeature(newFeature, { as: "features" });
+      let newFeature = null;
+      try {
+        newFeature = await Feature.create(feature, {
+          include: [
+            {
+              model: Scenario,
+              as: "scenarios",
+              include: [{ model: Step, as: "testcase_steps" }],
+            },
+          ],
+        });
+      } catch (error) {
+        next(error);
+      }
+      await environment.addFeature(newFeature);
+      let example = await environment.getFeatures();
+      console.log(example);
     } else {
       await addStepsToCurrentFeature(feature, currFeature, next);
     }
@@ -152,28 +183,25 @@ async function createNewFeatureOrAddNewStepsToExistingFeature(
 }
 
 async function addStepsToCurrentFeature(feature, currFeature, next) {
-  const featureScenarios = await currFeature.getScenarios({include:[{model:Step, as:"testcase_steps"}]});
-  for await (const featureScenario of featureScenarios) {
-    const isScenarioPresent = await currFeature.hasScenario(featureScenario);
-    if (isScenarioPresent) {
-        const featureScenarioData = feature.scenarios;
-        for await (const scenarioData of featureScenarioData){
-          if(scenarioData.testcase_title === featureScenario.testcase_title){
-
-            const data = scenarioData.testcase_steps;
-            for await (const d of data){
-              try {
-                await featureScenario.createTestcase_step(d);
-              } catch (error) {
-                next(error)
-              }
-            }
-          } else {
-            break;
-          }
+  const featureScenarios = await currFeature.getScenarios({
+    include: [{ model: Step, as: "testcase_steps" }],
+  });
+  const featureScenarioData = feature.scenarios;
+  for await (const scenarioData of featureScenarioData) {
+    let featureScenario = featureScenarios.find((featScen) => {
+      if (featScen.testcase_title === scenarioData.testcase_title){
+        return featScen;
+      }
+    });
+    if (featureScenario) {
+      const data = scenarioData.testcase_steps;
+      for await (const d of data) {
+        try {
+          await featureScenario.createTestcase_step(d);
+        } catch (error) {
+          next(error);
         }
-        // const newFeatureScenario = await featureScenario.getTestcase_steps();
-        // console.log(newFeatureScenario);
+      }
     } else {
       const newScenario = await currFeature.createScenario(scenario, {
         include: [{ model: Step, as: "testcase_steps" }],
@@ -182,49 +210,3 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
   }
 }
 
-async function createNewFeature(feature, next) {
-  let newFeature = null;
-  try {
-    newFeature = await Feature.create(feature, {
-      include: [
-        {
-          model: Scenario,
-          as: "scenarios",
-          include: [{ model: Step, as: "testcase_steps" }],
-        },
-      ],
-    });
-  } catch (error) {
-    next(error);
-  }
-}
-// let scenarios = await Promise.all(
-//   feature.scenarios.map(async (scenario) => {
-//     const currScenario = await Scenario.findOne({
-//       where: { testcase_title: scenario.testcase_title },
-//       include: [Step],
-//     });
-
-//     if (currScenario == null) {
-//       const newSenario = await Scenario.create(
-//         { scenario },
-//         { include: [Step] },
-//         {include:Feature}
-//       );
-//       newScenario.addSteps(steps);
-//       console.log(newScenario);
-//     } else {
-//       let steps = await Promise.all(
-//         scenario.testcase_steps.map(async (step) => {
-//           const newStep = await Step.create(
-//             { step },
-//             { include: Scenario }
-//           );
-//           console.log(newStep);
-//         })
-//       );
-//       currScenario.addSteps(steps);
-//       console.log(currScenario.testcase_title);
-//     }
-//   })
-// );
