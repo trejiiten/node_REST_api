@@ -72,17 +72,6 @@ module.exports = {
           next,
           currEnvironment
         );
-        // const featuresPresent = await Feature.findAll({
-        //   include: [
-        //     {
-        //       model: Scenario,
-        //       as: "scenarios",
-        //       include: [{ model: Step, as: "testcase_steps" }],
-        //     },
-        //   ],
-        // });
-        // let example = await currEnvironment.setFeature(featuresPresent);
-        // console.log(example);
       }
       result = await Environment.findOne(environmentAndNestedData);
 
@@ -174,10 +163,12 @@ async function createNewFeatureOrAddNewStepsToExistingFeature(
         next(error);
       }
       await environment.addFeature(newFeature);
-      let example = await environment.getFeatures();
-      console.log(example);
     } else {
       await addStepsToCurrentFeature(feature, currFeature, next);
+      let environmentFeatures = await environment.getFeatures({where:{id:currFeature.id}});
+      if(environmentFeatures.length < 1){
+        await environment.addFeature(currFeature);
+      }
     }
   }
 }
@@ -203,7 +194,7 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
         }
       }
     } else {
-      const newScenario = await currFeature.createScenario(scenario, {
+      await currFeature.createScenario(scenario, {
         include: [{ model: Step, as: "testcase_steps" }],
       });
     }
