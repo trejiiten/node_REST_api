@@ -4,8 +4,10 @@ const router = require("express-promise-router")();
 
 const StepsController = require("../controllers/steps");
 
-router.route("/").get(StepsController.index).post(StepsController.newStep);
-
+router
+    .route("/")
+        .get(StepsController.index);
+        
 router.route("/:stepId").get(StepsController.getStep);
 
 module.exports = router;

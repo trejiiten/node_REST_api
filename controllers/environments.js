@@ -7,13 +7,11 @@ const {
   Step,
   Environment_Feature,
 } = require("../models");
-const feature = require("../models/feature");
-const scenario = require("../models/scenario");
 
 module.exports = {
   index: async (req, res, next) => {
     try {
-      const environments = await Environment.findAll({where: { address: body.address, environment: body.environment },
+      const environments = await Environment.findAll({
         include: [
           {
             model: Feature,
@@ -83,9 +81,7 @@ module.exports = {
   getEnvironment: async (req, res, next) => {
     try {
       const { environmentId } = req.params;
-      const environment = await Environment.findByPk({
-        where: { id: environmentId },
-      });
+      const environment = await Environment.findByPk(environmentId);
       res.status(200).json(environment);
     } catch (err) {
       next(err);
@@ -107,9 +103,7 @@ module.exports = {
   getEnvironmentFeatures: async (req, res, next) => {
     try {
       const { environmentId } = req.params;
-      const environment = await Environment.findOne({
-        where: { id: environmentId },
-      });
+      const environment = await Environment.findByPk(environmentId);
       const features = await environment.getFeatures();
       res.status(200).json(features);
     } catch (err) {

@@ -4,20 +4,10 @@ const router = require("express-promise-router")();
 
 const ScenariosController = require("../controllers/scenarios");
 
-router
-  .route("/")
-  .get(ScenariosController.index)
-  .post(ScenariosController.newScenario);
+router.route("/").get(ScenariosController.index);
 
-router
-  .route("/:scenarioId")
-  .get(ScenariosController.getScenario)
-  .put(ScenariosController.replaceScenario)
-  .patch(ScenariosController.updateScenario);
+router.route("/:scenarioId").get(ScenariosController.getScenario);
 
-router
-  .route("/:scenarioId/steps")
-  .get(ScenariosController.getScenarioSteps)
-  .post(ScenariosController.newScenarioStep);
+router.route("/:scenarioId/steps").get(ScenariosController.getScenarioSteps);
 
 module.exports = router;
