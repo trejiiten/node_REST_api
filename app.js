@@ -8,6 +8,7 @@ const environmentRoutes = require("./routes/environments");
 const featureRoutes = require("./routes/features");
 const scenarioRoutes = require("./routes/scenarios");
 const stepRoutes = require("./routes/steps");
+const userRoutes = require("./routes/users");
 
 // Logging
 app.use(morgan("dev"));
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, GET");
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, GET, DELETE");
     return res.status(200).json({});
   }
   next();
@@ -35,6 +36,7 @@ app.use("/environments", environmentRoutes);
 app.use("/features", featureRoutes);
 app.use("/scenarios", scenarioRoutes);
 app.use("/steps", stepRoutes);
+app.use("/users", userRoutes);
 
 // Error Handling
 app.use((req, res, next) => {
@@ -59,8 +61,9 @@ app.use(express.json());
 
 app.listen(PORT, async ()=>{
   console.log(`listening on: http://localhost:${PORT}`)
-  // await sequelize.authenticate();
-  await sequelize.sync({force: true});
+  await sequelize.authenticate();
+  // await sequelize.sync({force: true});
+  await sequelize.sync();
   console.log('Database connected!')
 });
 

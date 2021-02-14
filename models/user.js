@@ -14,13 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    accessToken: DataTypes.STRING,
-    refreshToken: DataTypes.STRING
+    username: {type:DataTypes.STRING,unique:true,allowNull:false},
+    password: {type:DataTypes.STRING, allowNull:false},
+    accessToken: {type:DataTypes.STRING, allowNull:true},
+    refreshToken: {type:DataTypes.STRING, allowNull:true}
   }, {
     sequelize,
     modelName: 'User',
+    tableName: 'user'
   });
   return User;
 };

@@ -3,11 +3,13 @@ const express = require("express");
 const router = require("express-promise-router")();
 
 const EnvironmentsController = require("../controllers/environments");
+const authorization = require("../middleware/check_authorization");
+
 
 router
-  .route("/")
-  .get(EnvironmentsController.index)
-  .post(EnvironmentsController.newEnvironment);
+  // .route("/")
+  .get("/", EnvironmentsController.index)
+  .post("/",authorization.tokenAuthentication, EnvironmentsController.newEnvironment);
 
 router
   .route("/:environmentId")
@@ -16,7 +18,7 @@ router
 
 router
   .route("/:environmentId/features")
-  .get(EnvironmentsController.getEnvironmentFeatures)
-  .post(EnvironmentsController.newEnvironmentFeature);
+  .get(EnvironmentsController.getEnvironmentFeatures);
+  // .post(EnvironmentsController.newEnvironmentFeature);
 
 module.exports = router;
