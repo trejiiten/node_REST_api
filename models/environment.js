@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.environmentFeatureAssociation = this.belongsToMany(models.Feature, {
-        through:"environment_feature",
+        through:"environment_features",
         uniqueKey:false,
         onDelete: "CASCADE",
         timestamps:false,
@@ -76,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Environment",
-      tableName: "environment",
+      tableName: "environments",
     }
   );
   return Environment;

@@ -27,6 +27,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      featureId:{
+        type: Sequelize.INTEGER,
+        references:{model:'Features', key:'id'},
       }
     });
   },

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       this.environmentFeatureAssociation = this.belongsToMany(
         models.Environment,
         {
-          through: "environment_feature",
+          through: "environment_features",
           uniqueKey: false,
           onDelete: "CASCADE",
           timestamps: false,
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Feature",
-      tableName: "feature",
+      tableName: "features",
     }
   );
   return Feature;

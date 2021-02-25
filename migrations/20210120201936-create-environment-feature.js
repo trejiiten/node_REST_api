@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       environment_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{model:'Environments', key:'id'},
       },
       feature_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{model:'Features', key:'id'},
       },
       createdAt: {
         allowNull: false,
