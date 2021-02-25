@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const fs = require("fs");
+const path = require("path");
 
 const environmentRoutes = require("./routes/environments");
 const featureRoutes = require("./routes/features");
@@ -11,10 +13,38 @@ const stepRoutes = require("./routes/steps");
 const userRoutes = require("./routes/users");
 
 // Logging
-app.use(morgan("dev"));
+const fullLogStream = fs.createWriteStream(
+  path.join(__dirname, "./logging/fullLog.log"),
+  { flags: "a" }
+);
+const errorFailureLogStream = fs.createWriteStream(
+  path.join(__dirname, "./logging/errorLog.log"),
+  { flags: "a" }
+);
+const nonFailureLogStream = fs.createWriteStream(
+  path.join(__dirname, "./logging/nonFailureLog.log"),
+  { flags: "a" }
+);
+app.use(morgan("combined", { stream: fullLogStream }));
+app.use(
+  morgan("combined", {
+    skip: function (req, res) {
+      return res.statusCode < 400;
+    },
+    stream: errorFailureLogStream,
+  })
+);
+app.use(
+  morgan("combined", {
+    skip: function (req, res) {
+      return res.statusCode > 400;
+    },
+    stream: nonFailureLogStream,
+  })
+);
 // Parse json req
-app.use(express.urlencoded({ limit:'50mb', extended: false }));
-app.use(express.json({limit:'50mb'}));
+app.use(express.urlencoded({ limit: "50mb", extended: false }));
+app.use(express.json({ limit: "50mb" }));
 
 // CORS headers
 app.use((req, res, next) => {
@@ -56,15 +86,15 @@ app.use((error, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.listen(PORT, async ()=>{
-  console.log(`listening on: http://localhost:${PORT}`)
+app.listen(PORT, async () => {
+  console.log(`listening on: http://localhost:${PORT}`);
   await sequelize.authenticate();
   // await sequelize.sync({force: true});
   await sequelize.sync();
-  console.log('Database connected!')
+  console.log("Database connected!");
 });
 
- module.exports = app;
+module.exports = app;
