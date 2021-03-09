@@ -1,8 +1,8 @@
+require("dotenv").config();
 const { sequelize } = require("./models");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
 

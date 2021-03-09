@@ -1,20 +1,20 @@
-const fs = require('fs');
 require("dotenv").config();
+const fs = require('fs');
 
 module.exports = {
   development: {
-    username: 'root',
-    password: 'coeurame2!',
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
     database: 'extentreports_dev',
-    host: '127.0.0.1',
+    host: process.env.DB_HOSTNAME,
     dialect: 'mysql',
     timezone: "-06:00"
   },
   test: {
-    username: 'root',
-    password: 'coeurame2!',
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
     database: 'extentreports_test',
-    host: '127.0.0.1',
+    host: process.env.DB_HOSTNAME,
     dialect: 'mysql',
     timezone: "-06:00"
   },
