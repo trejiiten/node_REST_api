@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Step.init(
     {
-      id:{
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        autoIncrement: true
+        autoIncrement: true,
       },
       testcase_step_title: DataTypes.TEXT,
       testcase_step_status: DataTypes.STRING,
@@ -31,6 +31,18 @@ module.exports = (sequelize, DataTypes) => {
         require: false,
         allowNull: true,
       },
+      /** 
+       * The following column was added through migration.
+       * see: migrations/20210308161523-add_report_link_column_to_steps_table 
+       * code:
+       * 
+       * ,
+       * extent_report_link: {
+       *    type: DataTypes.STRING,
+       *    require: false,
+       *    allowNull: true,
+       * },
+      */
     },
     {
       sequelize,

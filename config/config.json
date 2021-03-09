@@ -4,20 +4,23 @@
     "password": "coeurame2!",
     "database": "extentreports",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "-06:00"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "coeurame2!",
+    "database": "extentreports_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "-06:00"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
+    "password": "coeurame2!",
+    "database": "extentreports_prod",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "-06:00"
   }
 }

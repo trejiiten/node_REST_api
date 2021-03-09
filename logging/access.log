@@ -1,2 +1,0 @@
-::ffff:127.0.0.1 - - [25/Feb/2021:20:50:16 +0000] "POST /users/login HTTP/1.1" 201 206 "-" "Apache-HttpClient/4.5.2 (Java/14.0.1)"
-::ffff:127.0.0.1 - - [25/Feb/2021:20:50:18 +0000] "POST /environments HTTP/1.1" 200 231031 "-" "Apache-HttpClient/4.5.2 (Java/14.0.1)"

@@ -60,7 +60,7 @@ app.use((req, res, next) => {
   }
   next();
 });
-
+app.get('/favicon.ico', (req, res) => res.status(204));
 // Routes that handle HTTP requests
 app.use("/environments", environmentRoutes);
 app.use("/features", featureRoutes);

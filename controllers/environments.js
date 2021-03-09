@@ -70,8 +70,8 @@ module.exports = {
           next,
           currEnvironment
         );
-        await currEnvironment.update(body);
-        const updated = await Environment.findOne({where:{id:currEnvironment.id}});
+        await Environment.update(body, {where:{address:body.address, environment:body.environment}});
+        const updated = await Environment.findOne({where:{address:currEnvironment.address, environment:currEnvironment.environment}});
         console.log(updated);
       }
       result = await Environment.findOne(environmentAndNestedData);
@@ -190,11 +190,17 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
           next(error);
         }
       }
+      await Scenario.update(scenarioData, {where:{testcase_title: scenarioData.testcase_title}, returning: true});
+      const updated = await Scenario.findOne({where:{testcase_title: scenarioData.testcase_title}});
+      console.log(updated);
     } else {
       await currFeature.createScenario(scenarioData, {
         include: [{ model: Step, as: "testcase_steps" }],
       });
     }
   }
+  await Feature.update(feature, {where:{feature_file_title: feature.feature_file_title}, returning: true});
+  const updated = await Feature.findOne({where:{feature_file_title: feature.feature_file_title}});
+  console.log(updated);
 }
 
