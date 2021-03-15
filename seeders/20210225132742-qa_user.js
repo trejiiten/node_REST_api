@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
-      'Users',[{
+      'users',[{
         username: `${process.env.QA_USER}`,
         password: await ecryptSecret(process.env.QA_PASS),
         createdAt : new Date(),
@@ -15,7 +15,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Users', null, {});
+    return queryInterface.bulkDelete('users', null, {});
   }
 };
 
