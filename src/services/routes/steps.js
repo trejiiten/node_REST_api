@@ -8,6 +8,6 @@ router
     .route("/")
         .get(StepsController.index);
         
-router.route("/:stepId").get(StepsController.getStep);
+router.route("/:id").get(StepsController.getStep);
 
 module.exports = router;

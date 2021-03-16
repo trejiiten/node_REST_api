@@ -6,7 +6,7 @@ const {
   Scenario,
   Step,
   Environment_Feature,
-} = require("../models");
+} = require("../../db/models");
 
 module.exports = {
   index: async (req, res, next) => {
@@ -28,6 +28,7 @@ module.exports = {
       res.status(201).json(environments);
     } catch (err) {
       next(err);
+      res.status(500).send();
     }
   },
   newEnvironment: async (req, res, next) => {
@@ -58,6 +59,7 @@ module.exports = {
           newEnvironment = await Environment.create(body);
         } catch (error) {
           next(error);
+          res.status(500).send();
         }
         await createNewFeatureOrAddNewStepsToExistingFeature(
           bodyFeatures,
@@ -72,27 +74,28 @@ module.exports = {
         );
         await Environment.update(body, {where:{address:body.address, environment:body.environment}});
         const updated = await Environment.findOne({where:{address:currEnvironment.address, environment:currEnvironment.environment}});
-        console.log(updated);
       }
       result = await Environment.findOne(environmentAndNestedData);
 
       res.status(200).json(result);
     } catch (err) {
       next(err);
+      res.status(500).send();
     }
   },
   getEnvironment: async (req, res, next) => {
+    const environmentId = req.params.environmentId;
     try {
-      const { environmentId } = req.params;
       const environment = await Environment.findByPk(environmentId);
       res.status(200).json(environment);
     } catch (err) {
       next(err);
+      res.status(500).send();
     }
   },
   updateEnvironment: async (req, res, next) => {
+    const environmentId = req.params.id;
     try {
-      const { environmentId } = req.params;
       const newEnvironment = req.body;
       const result = await Environment.update(
         { newEnvironment },
@@ -101,29 +104,30 @@ module.exports = {
       res.status(200).json({ message: `${environmentId} has been updated` });
     } catch (err) {
       next(err);
+      res.status(500).send();
     }
   },
   getEnvironmentFeatures: async (req, res, next) => {
+    const environmentId = req.params.id;
     try {
-      const { environmentId } = req.params;
       const environment = await Environment.findByPk(environmentId);
       const features = await environment.getFeatures();
       res.status(200).json(features);
     } catch (err) {
       next(err);
+      res.status(500).send();
     }
   },
   newEnvironmentFeature: async (req, res, next) => {
+    const environmentId = req.params.id;
     try {
-      const { environmentId } = req.params;
       const newFeature = Feature.create(req.body);
-      const environment = await Environment.findByPk({
-        where: { id: environmentId },
-      });
+      const environment = await Environment.findByPk(environmentId);
       await environment.addFeature(newFeature);
       res.status(201).json(newFeature);
     } catch (err) {
       next(err);
+      res.status(500).send();
     }
   },
 };
@@ -158,6 +162,7 @@ async function createNewFeatureOrAddNewStepsToExistingFeature(
         });
       } catch (error) {
         next(error);
+        res.status(500).send();
       }
       await environment.addFeature(newFeature);
     } else {
@@ -188,11 +193,11 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
           await featureScenario.createTestcase_step(d);
         } catch (error) {
           next(error);
+          res.status(500).send();
         }
       }
       await Scenario.update(scenarioData, {where:{testcase_title: scenarioData.testcase_title}, returning: true});
       const updated = await Scenario.findOne({where:{testcase_title: scenarioData.testcase_title}});
-      console.log(updated);
     } else {
       await currFeature.createScenario(scenarioData, {
         include: [{ model: Step, as: "testcase_steps" }],
@@ -201,6 +206,5 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
   }
   await Feature.update(feature, {where:{feature_file_title: feature.feature_file_title}, returning: true});
   const updated = await Feature.findOne({where:{feature_file_title: feature.feature_file_title}});
-  console.log(updated);
 }
 

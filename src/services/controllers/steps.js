@@ -6,7 +6,7 @@ const {
   Scenario,
   Step,
   Environment_Feature,
-} = require("../models");
+} = require("../../db/models");
 
 module.exports = {
   index: async (req, res, next) => {
@@ -15,6 +15,7 @@ module.exports = {
       res.status(201).json(steps);
     } catch (err) {
       next(err);
+      res.status(500).send();
     }
   },
 
@@ -29,12 +30,13 @@ module.exports = {
   // },
 
   getStep: async (req, res, next) => {
+    const stepId = req.params.id;
     try {
-      const { stepId } = req.params;
       const step = await Step.findByPk(stepId);
       res.status(200).json(step);
     } catch (err) {
       next(err);
+      res.status(500).send();
     }
   },
 };

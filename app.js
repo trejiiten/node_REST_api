@@ -1,28 +1,28 @@
 require("dotenv").config();
-const { sequelize } = require("./models");
+const { sequelize } = require("./src/db/models");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const fs = require("fs");
 const path = require("path");
 
-const environmentRoutes = require("./routes/environments");
-const featureRoutes = require("./routes/features");
-const scenarioRoutes = require("./routes/scenarios");
-const stepRoutes = require("./routes/steps");
-const userRoutes = require("./routes/users");
+const environmentRoutes = require("./src/services/routes/environments");
+const featureRoutes = require("./src/services/routes/features");
+const scenarioRoutes = require("./src/services/routes/scenarios");
+const stepRoutes = require("./src/services/routes/steps");
+const userRoutes = require("./src/services/routes/users");
 
 // Logging
 const fullLogStream = fs.createWriteStream(
-  path.join(__dirname, "./logging/fullLog.log"),
+  path.join(__dirname, "./src/utils/logs/fullLog.log"),
   { flags: "a" }
 );
 const errorFailureLogStream = fs.createWriteStream(
-  path.join(__dirname, "./logging/errorLog.log"),
+  path.join(__dirname, "./src/utils/logs/errorLog.log"),
   { flags: "a" }
 );
 const nonFailureLogStream = fs.createWriteStream(
-  path.join(__dirname, "./logging/nonFailureLog.log"),
+  path.join(__dirname, "./src/utils/logs/nonFailureLog.log"),
   { flags: "a" }
 );
 app.use(morgan("combined", { stream: fullLogStream }));

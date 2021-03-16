@@ -12,12 +12,12 @@ router
   .post("/",authorization.tokenAuthentication, EnvironmentsController.newEnvironment);
 
 router
-  .route("/:environmentId")
+  .route("/:id")
   .get(EnvironmentsController.getEnvironment)
   .patch(EnvironmentsController.updateEnvironment);
 
 router
-  .route("/:environmentId/features")
+  .route("/:id/features")
   .get(EnvironmentsController.getEnvironmentFeatures);
   // .post(EnvironmentsController.newEnvironmentFeature);
 

@@ -6,10 +6,10 @@ const FeaturesController = require("../controllers/features");
 
 router.route("/").get(FeaturesController.index);
 
-router.route("/:featureId").get(FeaturesController.getFeature);
+router.route("/:id").get(FeaturesController.getFeature);
 
 router
-  .route("/:featureId/scenarios")
+  .route("/:id/scenarios")
   .get(FeaturesController.getFeatureScenarios);
 
 module.exports = router;
