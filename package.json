@@ -7,9 +7,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "nodemon app.js",
-    "dev": "nodemon app.js",
-    "start": "npx sequelize-cli db:migrate && nodemon app.js",
+    "test": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "start": "npx sequelize-cli db:migrate && nodemon server.js",
     "seed": "npx sequelize-cli db:seed:all",
     "migrate_up": "npx sequelize-cli db:migrate",
     "migrate_down": "npx sequelize-cli db:migrate:undo"
