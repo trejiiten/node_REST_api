@@ -2,11 +2,14 @@
   "name": "node_rest_api",
   "version": "1.0.0",
   "description": "RESTful API using node.js",
+  "engines": {
+    "node": "14.16.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "nodemon app.js",
     "dev": "nodemon app.js",
-    "start": "npx sequelize-cli db:migrate && node app.js",
+    "start": "npx sequelize-cli db:migrate && nodemon app.js",
     "seed": "npx sequelize-cli db:seed:all",
     "migrate_up": "npx sequelize-cli db:migrate",
     "migrate_down": "npx sequelize-cli db:migrate:undo"
