@@ -43,7 +43,10 @@ app.use(
   })
 );
 
+// HTTP Compression
 app.use(compression());
+
+// Protection against common vulnerabilities
 app.use(helmet());
 
 // Parse json req
@@ -64,7 +67,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.get('/favicon.ico', (req, res) => res.status(204));
 // Routes that handle HTTP requests
 app.use("/environments", environmentRoutes);
 app.use("/features", featureRoutes);
@@ -87,9 +89,5 @@ app.use((error, req, res, next) => {
     },
   });
 });
-
-
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
 
 module.exports = app;

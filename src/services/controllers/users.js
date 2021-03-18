@@ -42,11 +42,11 @@ module.exports = {
     const userId = req.params.userInput;
     try {
       const user = await User.findByPk(userId);
-      res.status(200).json({id:user.id, username: user.username, createdAt:user.createdAt});
+      res.status(201).json({id:user.id, username: user.username, createdAt:user.createdAt});
     } catch (error) {
       next(error);
+      res.status(500).send();
     }
-    res.status(500).send();
   },
   deleteUser: async (req, res, next) => {
     const userInput = req.params.userInput;
