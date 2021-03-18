@@ -68,6 +68,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Reset last-modified to correct for 304 responses due to caching
 app.get('/*', function(req, res, next){ 
   res.setHeader('Last-Modified', (new Date()).toUTCString());
   next(); 
