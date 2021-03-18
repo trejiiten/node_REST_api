@@ -43,15 +43,12 @@ app.use(
   })
 );
 
-// HTTP Compression
-app.use(compression());
-
-// Protection against common vulnerabilities
-app.use(helmet());
-
 // Parse json req
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
 app.use(express.json({ limit: "50mb" }));
+
+// Protection against common vulnerabilities
+app.use(helmet());
 
 // CORS headers
 app.use((req, res, next) => {
@@ -67,6 +64,10 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+
+// HTTP Compression
+app.use(compression());
 
 // Reset last-modified to correct for 304 responses due to caching
 app.get('/*', function(req, res, next){ 
