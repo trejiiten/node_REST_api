@@ -42,10 +42,19 @@ The following dependencies are used in this application:
 - [mysql2](https://www.npmjs.com/package/mysql2)
 - [sequelize](https://www.npmjs.com/package/sequelize)
 - [sequelize-cli](https://www.npmjs.com/package/sequelize-cli)
+- [compression](https://www.npmjs.com/package/compression)
+- [helmet](https://www.npmjs.com/package/helmet)
 
 If they do not install after initializing, type the following command into your terminal:
+
+Locally:
 ```bash
-npm install --save bcrypt dotenv express express-promise-router jsonwebtoken morgan mysql2 sequelize sequelize-cli
+npm install --save bcrypt dotenv express express-promise-router jsonwebtoken morgan mysql2 sequelize sequelize-cli compression helmet
+```
+
+Globally:
+```bash
+npm install -g --save bcrypt dotenv express express-promise-router jsonwebtoken morgan mysql2 sequelize sequelize-cli compression helmet
 ```
 
 For auto-refreshing your local server, type the following:
@@ -53,11 +62,12 @@ For auto-refreshing your local server, type the following:
 npm install --save nodemon
 ```
 
-To use the Sequelize CLI on your system, you will need to type the following in your project's root folder:
+If you installed dependencies globally, to use the Sequelize CLI on your system, you will need to type the following in your project's root folder.:
 ```bash
 sequelize init
 ```
-if that does not work, type:
+
+If the installation was local, you will type the following:
 ```bash
 npx sequelize init
 ```
