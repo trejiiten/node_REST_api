@@ -4,7 +4,7 @@ module.exports = {
   index: async (req, res, next) => {
     try {
       const steps = await Step.find({});
-      res.status(201).json(steps);
+      res.status(200).json(steps);
     } catch (err) {
       next(err);
     }

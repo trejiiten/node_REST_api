@@ -11,14 +11,19 @@ const {
 module.exports = {
   index: async (req, res, next) => {
     try {
-      const scenarios = await Scenario.findAll();
-      res.status(201).json(scenarios);
+      const scenarios = await Scenario.findAll({
+        include: [{ model: Step, as: "testcase_steps" }],
+      });
+      scenarios.length == 0
+        ? res.status(404).json({
+            api_notification: { message: "There were no records found" },
+          })
+        : res.status(200).json(scenarios);
     } catch (err) {
       next(err);
       res.status(500).send();
     }
   },
-
 
   getScenario: async (req, res, next) => {
     const scenarioId = req.params.id;

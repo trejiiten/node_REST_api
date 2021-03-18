@@ -11,8 +11,20 @@ const {
 module.exports = {
   index: async (req, res, next) => {
     try {
-      const features = await Feature.findAll();
-      res.status(201).json(features);
+      const features = await Feature.findAll({
+        include: [
+          {
+            model: Scenario,
+            as: "scenarios",
+            include: [{ model: Step, as: "testcase_steps" }],
+          },
+        ],
+      });
+      features.length == 0
+        ? res.status(404).json({
+            api_notification: { message: "There were no records found" },
+          })
+        : res.status(200).json(features);
     } catch (err) {
       next(err);
       res.status(500).send();
@@ -62,7 +74,9 @@ module.exports = {
     const featureId = req.params.id;
     try {
       const feature = await Feature.findByPk(featureId);
-      const scenarios = await feature.getScenarios({include:[{model:Step, as:"testcase_steps"}]});
+      const scenarios = await feature.getScenarios({
+        include: [{ model: Step, as: "testcase_steps" }],
+      });
       res.status(200).json(scenarios);
     } catch (err) {
       next(err);

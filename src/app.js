@@ -67,6 +67,11 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.get('/*', function(req, res, next){ 
+  res.setHeader('Last-Modified', (new Date()).toUTCString());
+  next(); 
+});
 // Routes that handle HTTP requests
 app.use("/environments", environmentRoutes);
 app.use("/features", featureRoutes);

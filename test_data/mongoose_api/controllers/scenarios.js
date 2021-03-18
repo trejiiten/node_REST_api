@@ -5,7 +5,7 @@ module.exports = {
   index: async (req, res, next) => {
     try {
       const scenarios = await Scenario.find({});
-      res.status(201).json(scenarios);
+      res.status(200).json(scenarios);
     } catch (err) {
       next(err);
     }

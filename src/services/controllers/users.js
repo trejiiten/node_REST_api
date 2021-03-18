@@ -9,7 +9,11 @@ module.exports = {
       const users = await User.findAll({
         attributes: ["username", "createdAt"],
       });
-      res.status(201).json(users);
+      users.length == 0
+        ? res.status(404).json({
+            api_notification: { message: "There were no records found" },
+          })
+        : res.status(200).json(users);
     } catch (error) {
       next(error);
       res.status(500).send();
@@ -42,7 +46,11 @@ module.exports = {
     const userId = req.params.userInput;
     try {
       const user = await User.findByPk(userId);
-      res.status(201).json({id:user.id, username: user.username, createdAt:user.createdAt});
+      res.status(200).json({
+        id: user.id,
+        username: user.username,
+        createdAt: user.createdAt,
+      });
     } catch (error) {
       next(error);
       res.status(500).send();
@@ -106,7 +114,7 @@ module.exports = {
             expiresIn: "10m",
           }
         );
-        return res.status(201).json({
+        return res.status(200).json({
           access_token: token,
         });
       } else {

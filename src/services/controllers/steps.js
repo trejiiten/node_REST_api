@@ -12,7 +12,11 @@ module.exports = {
   index: async (req, res, next) => {
     try {
       const steps = await Step.findAll();
-      res.status(201).json(steps);
+      steps.length == 0
+        ? res.status(404).json({
+            api_notification: { message: "There were no records found" },
+          })
+        : res.status(200).json(steps);
     } catch (err) {
       next(err);
       res.status(500).send();

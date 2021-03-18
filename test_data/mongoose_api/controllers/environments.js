@@ -5,7 +5,7 @@ module.exports = {
   index: async (req, res, next) => {
     try {
       const environments = await Environment.find({});
-      res.status(201).json(environments);
+      res.status(200).json(environments);
     } catch (err) {
       next(err);
     }
@@ -27,7 +27,7 @@ module.exports = {
       } else {
         const newEnvironment = new Environment(req.body);
         const environment = await newEnvironment.save();
-        res.status(201).json(environment);
+        res.status(200).json(environment);
       }
     } catch (err) {
       next(err);

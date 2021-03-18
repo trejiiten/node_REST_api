@@ -24,8 +24,13 @@ module.exports = {
               },
             ],
           },
-        ],});
-      res.status(201).json(environments);
+        ],
+      });
+      environments.length == 0
+        ? res.status(404).json({
+            api_notification: { message: "There were no records found" },
+          })
+        : res.status(200).json(environments);
     } catch (err) {
       next(err);
       res.status(500).send();
@@ -72,8 +77,15 @@ module.exports = {
           next,
           currEnvironment
         );
-        await Environment.update(body, {where:{address:body.address, environment:body.environment}});
-        const updated = await Environment.findOne({where:{address:currEnvironment.address, environment:currEnvironment.environment}});
+        await Environment.update(body, {
+          where: { address: body.address, environment: body.environment },
+        });
+        const updated = await Environment.findOne({
+          where: {
+            address: currEnvironment.address,
+            environment: currEnvironment.environment,
+          },
+        });
       }
       result = await Environment.findOne(environmentAndNestedData);
 
@@ -167,8 +179,10 @@ async function createNewFeatureOrAddNewStepsToExistingFeature(
       await environment.addFeature(newFeature);
     } else {
       await addStepsToCurrentFeature(feature, currFeature, next);
-      let environmentFeatures = await environment.getFeatures({where:{id:currFeature.id}});
-      if(environmentFeatures.length < 1){
+      let environmentFeatures = await environment.getFeatures({
+        where: { id: currFeature.id },
+      });
+      if (environmentFeatures.length < 1) {
         await environment.addFeature(currFeature);
       }
     }
@@ -182,7 +196,7 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
   const featureScenarioData = feature.scenarios;
   for await (const scenarioData of featureScenarioData) {
     let featureScenario = featureScenarios.find((featScen) => {
-      if (featScen.testcase_title === scenarioData.testcase_title){
+      if (featScen.testcase_title === scenarioData.testcase_title) {
         return featScen;
       }
     });
@@ -196,15 +210,24 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
           res.status(500).send();
         }
       }
-      await Scenario.update(scenarioData, {where:{testcase_title: scenarioData.testcase_title}, returning: true});
-      const updated = await Scenario.findOne({where:{testcase_title: scenarioData.testcase_title}});
+      await Scenario.update(scenarioData, {
+        where: { testcase_title: scenarioData.testcase_title },
+        returning: true,
+      });
+      const updated = await Scenario.findOne({
+        where: { testcase_title: scenarioData.testcase_title },
+      });
     } else {
       await currFeature.createScenario(scenarioData, {
         include: [{ model: Step, as: "testcase_steps" }],
       });
     }
   }
-  await Feature.update(feature, {where:{feature_file_title: feature.feature_file_title}, returning: true});
-  const updated = await Feature.findOne({where:{feature_file_title: feature.feature_file_title}});
+  await Feature.update(feature, {
+    where: { feature_file_title: feature.feature_file_title },
+    returning: true,
+  });
+  const updated = await Feature.findOne({
+    where: { feature_file_title: feature.feature_file_title },
+  });
 }
-
