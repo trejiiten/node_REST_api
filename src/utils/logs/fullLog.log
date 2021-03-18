@@ -103,3 +103,4 @@
 ::ffff:127.0.0.1 - - [16/Mar/2021:15:26:39 +0000] "GET /environments/2 HTTP/1.1" 200 4 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"
 ::ffff:127.0.0.1 - - [16/Mar/2021:15:26:43 +0000] "GET /features/2 HTTP/1.1" 200 4 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"
 ::ffff:127.0.0.1 - - [16/Mar/2021:15:27:11 +0000] "GET /features/2 HTTP/1.1" 200 4 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"
+::ffff:127.0.0.1 - - [18/Mar/2021:12:24:35 +0000] "GET /users/1 HTTP/1.1" 500 84 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"

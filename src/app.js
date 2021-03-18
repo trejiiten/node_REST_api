@@ -3,6 +3,8 @@ const app = express();
 const morgan = require("morgan");
 const fs = require("fs");
 const path = require("path");
+const compression = require('compression');
+const helmet = require("helmet");
 
 const environmentRoutes = require("./services/routes/environments");
 const featureRoutes = require("./services/routes/features");
@@ -40,6 +42,9 @@ app.use(
     stream: nonFailureLogStream,
   })
 );
+
+app.use(compression());
+app.use(helmet());
 
 // Parse json req
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
@@ -84,8 +89,7 @@ app.use((error, req, res, next) => {
 });
 
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
 module.exports = app;
