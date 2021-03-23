@@ -10,9 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.stepsScenarioAssociation = this.belongsTo(models.Scenario, {
         onDelete: "CASCADE",
-        // foreignKey: {
-        //   allowNull: false,
-        // }
       });
     }
   }
@@ -36,13 +33,21 @@ module.exports = (sequelize, DataTypes) => {
        * see: migrations/20210308161523-add_report_link_column_to_steps_table 
        * code:
        * 
-       * ,
-       * extent_report_link: {
-       *    type: DataTypes.STRING,
-       *    require: false,
-       *    allowNull: true,
-       * },
-      */
+       */
+      //  extent_report_link: {
+      //  type: DataTypes.STRING,
+      // },
+      
+      /** 
+       * The following column was added through migration.
+       * see: migrations/20210322150314-add_environment_to_steps_model_with_fk_pointing_to_environment_model 
+       * code:
+       * 
+       */
+      //  testcase_step_environment: {
+      //      type: DataTypes.STRING,
+      //  },
+      
     },
     {
       sequelize,

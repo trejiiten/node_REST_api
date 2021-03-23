@@ -2,15 +2,16 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.addColumn('steps', 'extent_report_link', {
+    return queryInterface.addColumn('steps', 'testcase_step_environment', {
       type: Sequelize.STRING,
+      allowNull: false,
     });
   },
 
   down: async (queryInterface, Sequelize) => {
     return queryInterface.removeColumn(
       'steps',
-      'extent_report_link',
+      'testcase_step_environment',
       Sequelize.STRING
     );
   },

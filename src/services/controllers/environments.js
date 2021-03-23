@@ -56,8 +56,13 @@ module.exports = {
     };
     let result = null;
     const bodyFeatures = body.features;
+    let currEnvironment = null;
     try {
-      let currEnvironment = await Environment.findOne(environmentAndNestedData);
+      currEnvironment = await Environment.findOne(environmentAndNestedData);
+    } catch (err) {
+      next(err);
+      res.status(500).send();
+    }
       if (currEnvironment == null) {
         let newEnvironment = null;
         try {
@@ -66,34 +71,36 @@ module.exports = {
           next(error);
           res.status(500).send();
         }
-        await createNewFeatureOrAddNewStepsToExistingFeature(
-          bodyFeatures,
-          next,
-          newEnvironment
-        );
+        try {
+          await createNewFeatureOrAddNewStepsToExistingFeature(
+            bodyFeatures,
+            next,
+            newEnvironment
+          );
+        } catch (error) {
+          next(error);
+          res.status(500).send();
+        }
+        
       } else {
-        await createNewFeatureOrAddNewStepsToExistingFeature(
-          bodyFeatures,
-          next,
-          currEnvironment
-        );
+        try {
+          await createNewFeatureOrAddNewStepsToExistingFeature(
+            bodyFeatures,
+            next,
+            currEnvironment
+          );
+        } catch (error) {
+          next(error);
+          res.status(500).send();
+        }
+        
         await Environment.update(body, {
           where: { address: body.address, environment: body.environment },
-        });
-        const updated = await Environment.findOne({
-          where: {
-            address: currEnvironment.address,
-            environment: currEnvironment.environment,
-          },
         });
       }
       result = await Environment.findOne(environmentAndNestedData);
 
       res.status(200).json(result);
-    } catch (err) {
-      next(err);
-      res.status(500).send();
-    }
   },
   getEnvironment: async (req, res, next) => {
     const environmentId = req.params.environmentId;
@@ -174,11 +181,11 @@ async function createNewFeatureOrAddNewStepsToExistingFeature(
         });
       } catch (error) {
         next(error);
-        res.status(500).send();
       }
       await environment.addFeature(newFeature);
     } else {
-      await addStepsToCurrentFeature(feature, currFeature, next);
+      const dbFeatureTotalTestCount = currFeature.total_tests;
+      await addStepsToCurrentFeature(feature, currFeature, dbFeatureTotalTestCount, next);
       let environmentFeatures = await environment.getFeatures({
         where: { id: currFeature.id },
       });
@@ -189,7 +196,7 @@ async function createNewFeatureOrAddNewStepsToExistingFeature(
   }
 }
 
-async function addStepsToCurrentFeature(feature, currFeature, next) {
+async function addStepsToCurrentFeature(feature, currFeature, dbFeatureTotalTestCount, next) {
   const featureScenarios = await currFeature.getScenarios({
     include: [{ model: Step, as: "testcase_steps" }],
   });
@@ -207,15 +214,11 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
           await featureScenario.createTestcase_step(d);
         } catch (error) {
           next(error);
-          res.status(500).send();
         }
       }
       await Scenario.update(scenarioData, {
         where: { testcase_title: scenarioData.testcase_title },
         returning: true,
-      });
-      const updated = await Scenario.findOne({
-        where: { testcase_title: scenarioData.testcase_title },
       });
     } else {
       await currFeature.createScenario(scenarioData, {
@@ -223,11 +226,27 @@ async function addStepsToCurrentFeature(feature, currFeature, next) {
       });
     }
   }
+  const updatedFeature = await Feature.findOne({where:{ feature_file_title: feature.feature_file_title }, include:[{ model: Scenario, as: "scenarios" }],});
+  let dbFeatureScenarioCount = updatedFeature.scenarios.length;
+  if(dbFeatureTotalTestCount != dbFeatureScenarioCount){
+    await Feature.update({total_tests: dbFeatureScenarioCount}, {
+      where: { feature_file_title: feature.feature_file_title },
+      returning: true,
+    });
+  } 
+  let fieldsToExclude = ['total_tests','total_steps'];
+  const excludedFieldsFeature = Object.keys(Feature.rawAttributes).filter(s => !fieldsToExclude.includes(s));
   await Feature.update(feature, {
     where: { feature_file_title: feature.feature_file_title },
+    fields: excludedFieldsFeature,
     returning: true,
   });
-  const updated = await Feature.findOne({
-    where: { feature_file_title: feature.feature_file_title },
-  });
+  // if (dbFeatureScenarioCount > newScenarioCount){
+  // } else {
+  //   await Feature.update(feature, {
+  //     where: { feature_file_title: feature.feature_file_title },
+  //     returning: true,
+  //   });
+    
+  // }
 }
