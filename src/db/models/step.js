@@ -34,9 +34,9 @@ module.exports = (sequelize, DataTypes) => {
        * code:
        * 
        */
-      //  extent_report_link: {
-      //  type: DataTypes.STRING,
-      // },
+       extent_report_link: {
+       type: DataTypes.STRING,
+      },
       
       /** 
        * The following column was added through migration.
@@ -44,9 +44,9 @@ module.exports = (sequelize, DataTypes) => {
        * code:
        * 
        */
-      //  testcase_step_environment: {
-      //      type: DataTypes.STRING,
-      //  },
+       testcase_step_environment: {
+           type: DataTypes.STRING,
+       },
       
     },
     {
