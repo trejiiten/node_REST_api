@@ -77,3 +77,32 @@ The devDependency [prettier](https://prettier.io/) is not necessary for this pro
 
 ## License
 [ISC](https://opensource.org/licenses/ISC)
+
+
+## Migrations - UP
+If a new migration has been made and a db update is in order, run the following commands:
+```bash
+npm run migrate_up
+```
+This will run the migrations and make changes to the db. HOWEVER, you will still need to change the model affected.
+Once the model is changed, run the following command:
+```bash
+npm start
+```
+
+
+## Migrations - DOWN
+If you need to revert a migration, run the following command
+```bash
+npm run migrate_down
+```
+
+
+## Seeds (persist data in db upon creation)
+To save data in the db (without running a test), run the following command to run all seeders:
+```bash
+npm run seed
+```
+
+Currently, the only data that must be in the db upon creation is for the users table. 
+If more data is created later, refer to the [Sequelize Documentation - Migrations](https://sequelize.org/master/manual/migrations.html)
