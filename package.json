@@ -12,6 +12,8 @@
     "build": "webpack",
     "start": "node server.js",
     "seed": "npx sequelize-cli db:seed:all",
+    "create_db": "npx sequelize-cli db:create",
+    "drop_db": "npx sequelize-cli db:drop",
     "migrate_up": "npx sequelize-cli db:migrate",
     "migrate_down": "npx sequelize-cli db:migrate:undo"
   },

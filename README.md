@@ -12,11 +12,6 @@ Use [npm](https://www.npmjs.com/) and intall all dependencies from the package.j
 npm install
 ```
 
-Once initialization is complete, to run, simply type the following into the terminal:
-```bash
-npm start
-```
-
 ## Purpose
 The purpose of this application is to store all relevant information from a test run, pass it to an API, which will then parse and persist the data into a MySQL database using the Sequelize ORM.
 
@@ -35,6 +30,46 @@ for any local development, you will need to install [MySQL server](https://dev.m
 To build the application using webpack, type the following command:
 ```bash
 npm run build
+```
+
+
+## To Start Server
+Once initialization is complete, to run, simply type the following into the terminal:
+```bash
+npm start
+```
+
+## "Lower Environment" rules
+You can change the environment in the .env file.
+
+- If starting for the first time: you will need to run your own mysql server, create the database, run the server, shut down the server, run migrations, and run seeds, then restart the server.
+
+To CREATE the database on your local server, type:
+```bash
+npm run create_db
+```
+
+To DROP the databse, type:
+```bash
+npm run drop_db
+```
+
+
+If you want to utilize lower env (dev/testing), you will have to:
+1) Change the NODE_ENV environment variable in the .env file
+
+2) for development (or test)
+```bash
+npm run dev
+```
+
+3) for test, each time the server refreshes, all data will be lost (set running nodemon by default). You can change that by modifying the "test" value in package.json to read:
+```json
+"test":"node server.js"
+```
+or
+```bash
+npm run test
 ```
 
 
