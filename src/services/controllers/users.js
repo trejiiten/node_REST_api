@@ -129,6 +129,11 @@ module.exports = {
   },
 };
 
+/**
+ * Method hashes and encrypts the user's password before storing it in the database using bcrypt.
+ * @param {*} secret - User's secret
+ * @returns - the hashed value that will be stored in the database
+ */
 async function ecryptSecret(secret) {
   const salt = await bcrypt.genSalt();
   const hashedPass = await bcrypt.hash(secret, salt);

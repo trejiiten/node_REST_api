@@ -9,6 +9,13 @@ const {
 } = require("../../db/models");
 
 module.exports = {
+  /**
+   * Gets a list of all Environments currently in the db along with their associated Features, Scenarios, and Steps
+   * 
+   * @param {*} req - The json object that will be parsed and persisted by the ORM
+   * @param {*} res - The server's response
+   * @param {*} next - Handles any errors that may occur 
+   */
   index: async (req, res, next) => {
     try {
       const environments = await Environment.findAll({
@@ -36,6 +43,20 @@ module.exports = {
       res.status(500).send();
     }
   },
+  /**
+   * Primary method called when sending data from QAA Framework to persist to the database.
+   * This method performs the following: <br>
+   * <ul>
+   * <li>Adds an environment</li>
+   * <li>For Every feature run by environment, create a new feature</li>
+   * <li>If feature already exists, add Scenarios/Steps to the feature</li>
+   * <li>If no new features, only Steps will be added to the db</li>
+   * </ul><br>
+   * 
+   * @param {*} req - The json object that will be parsed and persisted by the ORM
+   * @param {*} res - The server's response
+   * @param {*} next - Handles any errors that may occur
+   */
   newEnvironment: async (req, res, next) => {
     const body = req.body;
     const environmentAndNestedData = {
@@ -151,6 +172,12 @@ module.exports = {
   },
 };
 
+/**
+ * Method creates a new feature if it does not exist, or calls addStepsToCurrentFeature for adding new Scenarios and/or Steps to the database
+ * @param {*} bodyFeatures - a single feature from the list of feature objects in the req.body
+ * @param {*} next 
+ * @param {*} environment - The environment that was POSTed (can be new or existing)
+ */
 async function createNewFeatureOrAddNewStepsToExistingFeature(
   bodyFeatures,
   next,
@@ -196,6 +223,15 @@ async function createNewFeatureOrAddNewStepsToExistingFeature(
   }
 }
 
+/**
+ * If Scenario does not exist: method adds Scenarios and their Steps.
+ * If Scenario exists: method adds new Steps to existing scenarios.
+ * 
+ * @param {*} feature - The feature that is part of the req.body
+ * @param {*} currFeature - The current feature in the database
+ * @param {*} dbFeatureTotalTestCount - Count of how many total_tests there are for current feature in the database.
+ * @param {*} next 
+ */
 async function addStepsToCurrentFeature(feature, currFeature, dbFeatureTotalTestCount, next) {
   const featureScenarios = await currFeature.getScenarios({
     include: [{ model: Step, as: "testcase_steps" }],
