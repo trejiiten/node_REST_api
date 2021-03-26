@@ -31,6 +31,13 @@ The purpose of this application is to store all relevant information from a test
 for any local development, you will need to install [MySQL server](https://dev.mysql.com/downloads/mysql/)
 
 
+## To Build
+To build the application using webpack, type the following command:
+```bash
+npm run build
+```
+
+
 ## Application dependencies
 The following dependencies are used in this application:
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
@@ -44,6 +51,9 @@ The following dependencies are used in this application:
 - [sequelize-cli](https://www.npmjs.com/package/sequelize-cli)
 - [compression](https://www.npmjs.com/package/compression)
 - [helmet](https://www.npmjs.com/package/helmet)
+- [webpack](https://webpack.js.org)
+- [webpack-cli](https://webpack.js.org/api/cli/)
+- [webpack-node-externals](https://www.npmjs.com/package/webpack-node-externals)
 
 If they do not install after initializing, type the following command into your terminal:
 
