@@ -39,40 +39,6 @@ Once initialization is complete, to run, simply type the following into the term
 npm start
 ```
 
-## "Lower Environment" rules
-You can change the environment in the .env file.
-
-- If starting for the first time: you will need to run your own mysql server, create the database, run the server, shut down the server, run migrations, and run seeds, then restart the server.
-
-To CREATE the database on your local server, type:
-```bash
-npm run create_db
-```
-
-To DROP the databse, type:
-```bash
-npm run drop_db
-```
-
-
-If you want to utilize lower env (dev/testing), you will have to:
-1) Change the NODE_ENV environment variable in the .env file
-
-2) for development (or test)
-```bash
-npm run dev
-```
-
-3) for test, each time the server refreshes, all data will be lost (set running nodemon by default). You can change that by modifying the "test" value in package.json to read:
-```json
-"test":"node server.js"
-```
-or
-```bash
-npm run test
-```
-
-
 ## Application dependencies
 The following dependencies are used in this application:
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
@@ -94,12 +60,12 @@ If they do not install after initializing, type the following command into your 
 
 Locally:
 ```bash
-npm install --save bcrypt dotenv express express-promise-router jsonwebtoken morgan mysql2 sequelize sequelize-cli compression helmet
+npm install --save bcrypt dotenv express express-promise-router jsonwebtoken morgan mysql2 sequelize sequelize-cli compression helmet webpack webpack-cli webpack-node-externals
 ```
 
 Globally:
 ```bash
-npm install -g --save bcrypt dotenv express express-promise-router jsonwebtoken morgan mysql2 sequelize sequelize-cli compression helmet
+npm install -g --save bcrypt dotenv express express-promise-router jsonwebtoken morgan mysql2 sequelize sequelize-cli compression helmet webpack webpack-cli webpack-node-externals
 ```
 
 For auto-refreshing your local server, type the following:
@@ -120,8 +86,19 @@ npx sequelize init
 The devDependency [prettier](https://prettier.io/) is not necessary for this project.
 
 
-## License
-[ISC](https://opensource.org/licenses/ISC)
+# Script Commands
+## Create Database
+To CREATE the database on your local server, type:
+```bash
+npm run create_db
+```
+
+
+## Drop Database
+To DROP the databse, type:
+```bash
+npm run drop_db
+```
 
 
 ## Migrations - UP
@@ -151,3 +128,31 @@ npm run seed
 
 Currently, the only data that must be in the db upon creation is for the users table. 
 If more data is created later, refer to the [Sequelize Documentation - Migrations](https://sequelize.org/master/manual/migrations.html)
+
+
+## "Lower Environment"
+Rules:
+- You can change the environment in the .env file.
+- If starting for the first time: you will need to run your own mysql server, create the database, run the server, shut down the server, run migrations, and run seeds, then restart the server.
+
+
+If you want to utilize lower env (dev/testing), you will have to:
+1) Change the NODE_ENV environment variable in the .env file
+
+2) for development (or test)
+```bash
+npm run dev
+```
+
+3) for test, each time the server refreshes, all data will be lost (set running nodemon by default). You can change that by modifying the "test" value in package.json to read:
+```json
+"test":"node server.js"
+```
+or
+```bash
+npm run test
+```
+
+
+## License
+[ISC](https://opensource.org/licenses/ISC)
