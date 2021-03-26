@@ -7,9 +7,9 @@ Clone the directory to your local machine.
 git clone {repo_name}
 ```
 
-Use [npm](https://www.npmjs.com/) and initialize the folder.
+Use [npm](https://www.npmjs.com/) and intall all dependencies from the package.json the folder.
 ```bash
-npm init
+npm install
 ```
 
 Once initialization is complete, to run, simply type the following into the terminal:

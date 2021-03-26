@@ -1,6 +1,6 @@
 2020_11_27.txt.pub
 2020_11_27.txt
-node_modules
+**/node_modules
 config.json
-.env
+*.env
 *.log
