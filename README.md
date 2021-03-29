@@ -144,7 +144,7 @@ If you want to utilize lower env (dev/testing), you will have to:
 npm run dev
 ```
 
-3) for test, each time the server refreshes, all data will be lost (set running nodemon by default). You can change that by modifying the "test" value in package.json to read:
+3) for test, each time the server refreshes, all data will be lost (set running nodemon by default). You can change that by modifying the following code in server.js to read:
 ```javascript
 ENV.toLowerCase() == 'test'.toLowerCase()
     ? await sequelize.sync()
