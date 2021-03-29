@@ -145,13 +145,14 @@ npm run dev
 ```
 
 3) for test, each time the server refreshes, all data will be lost (set running nodemon by default). You can change that by modifying the "test" value in package.json to read:
-```json
-"test":"node server.js"
+```javascript
+ENV.toLowerCase() == 'test'.toLowerCase()
+    ? await sequelize.sync()
+    : await sequelize.sync();
 ```
-or
-```bash
-npm run test
-```
+
+The <code>{ force: true }</code> value tells sequelize that you want to drop and then create all tables again. It's usefull while testing when you do not want to save data.
+
 
 
 ## License
